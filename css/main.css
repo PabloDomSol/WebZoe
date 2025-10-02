@@ -13,27 +13,19 @@ body {
   color: #333;
   line-height: 1.6;
 }
-
 /* ===========================
-   🔹 BOTONES GLOBALES
+   🎨 VARIABLES GLOBALES
 =========================== */
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: 6px;
-  padding: 10px 18px;
-  font-size: 15px;
-  transition: all 0.3s ease;
+:root {
+  --color-principal: #dfdba7;
+  --color-borde: #dfdba7;
+  --color-texto: #dfdba7;
+  --color-fondo: white;
+  --color-determinado: black;
+  --duracion-animacion: 2s;
 }
 
-button.primary {
-  background-color: #0077cc;
-  color: white;
-}
 
-button.primary:hover {
-  background-color: #005fa3;
-}
 
 /* ===========================
    🔹 HEADER / NAVBAR
@@ -42,90 +34,258 @@ button.primary:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
+  height: 110px;
   padding: 0 20px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
+
+  /* Sin difuminado inicial */
+  background-color: transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-bottom: 2px solid transparent;
+  overflow: visible;
+
+  transition: all 0.4s ease; /* transición para difuminado y movimiento */
 }
 
-/* Botón izquierda */
-.nav-btn {
-  background-color: #0077cc;
-  color: white;
+/* Header con difuminado activado */
+.main-header.scrolled {
+  background-color: rgba(41, 41, 41, 0.164); /* sutil */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
-/* Logo centrado */
-.logo {
+/* Header oculto */
+.main-header.hidden {
+  transform: translateY(-120%);
+}
+
+
+/* Línea inferior animada al cargar */
+.main-header::after {
+  content: "";
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0;
+  left: 0;
+  height: 1.2px;
+  width: 0;
+  background-color: var(--color-borde);
+  animation: linea-aparece var(--duracion-animacion) ease-out forwards;
 }
+
+@keyframes linea-aparece {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* ===========================
+   🔹 BOTÓN IZQUIERDA
+=========================== */
+.nav-btn {
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0.123); /* semitransparente */
+  color: var(--color-texto);
+  border: 2px solid var(--color-borde);
+  border-radius: 25px;
+  border-width: 1px;
+  padding: 8px 40px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.4s ease;
+  margin-bottom: 10px;
+  margin-left: 60px;
+}
+
+/* Efecto de relleno al pasar el ratón */
+.nav-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: var(--color-borde);
+  transition: width 0.4s ease;
+  z-index: -1;
+}
+
+.nav-btn:hover::before {
+  width: 100%;
+}
+
+.nav-btn:hover {
+  color: #fff;
+}
+
+/* ===========================
+   🔹 LOGO CENTRADO
+=========================== */
 
 .logo img {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
 }
 
-/* Menú hamburguesa derecha */
+/* ===========================
+   🔹 MENÚ HAMBURGUESA DERECHA
+=========================== */
 .menu-icon {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 5px;
+  gap: 7px;
   cursor: pointer;
+  margin-bottom: 10px;
+  margin-right: 60px;
+
+  transform: scale(1.2); /* escala 1.5x más grande */
+  transform-origin: center; /* punto de referencia del escalado */
 }
 
 .menu-icon span {
   display: block;
-  width: 25px;
-  height: 3px;
-  background-color: #333;
+  width: 40px;
+  height: 1px;
+  background-color: var(--color-borde);
   border-radius: 3px;
+  transition: all 0.3s ease;
 }
 
-/* ===========================
-   🔹 FOOTER
-=========================== */
-footer {
-  background-color: #222;
-  color: #fff;
-  text-align: center;
-  padding: 20px 0;
-  margin-top: 50px;
+/* Animación hover */
+.menu-icon:hover span:nth-child(odd) {
+  transform: translateX(6px);
+  background-color: var(--color-principal);
 }
 
-/* ===========================
-   🔹 SECCIONES PRINCIPALES
-=========================== */
-section {
-  padding: 100px 20px 50px; /* padding top para dejar espacio al header fijo */
-  max-width: 1000px;
-  margin: 0 auto;
+.menu-icon:hover span:nth-child(even) {
+  transform: translateX(-6px);
+  background-color: var(--color-principal);
 }
+
+
+.logo{
+  width: 50px;
+  height: 50px;
+
+}
+/* ===========================
+   📱 RESPONSIVE
+=========================== */
+@media (max-width: 600px) {
+  .nav-btn {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  .logo img {
+    width: 35px;
+  }
+
+  section {
+    padding: 80px 15px 40px;
+  }
+}
+
+
+
+
+
+
 
 /* ===========================
    🔹 ANIMACIONES BÁSICAS
 =========================== */
-.fade-up, .fade-down, .fade-left, .fade-right {
+/* Animación desde abajo */
+.anim-up,
+.anim-left,
+.anim-right {
   opacity: 0;
-  transition: all 0.8s ease;
+  /* quitar transition aquí */
 }
 
-.fade-up    { transform: translateY(40px); }
-.fade-down  { transform: translateY(-40px); }
-.fade-left  { transform: translateX(-40px); }
-.fade-right { transform: translateX(40px); }
+/* Posiciones iniciales */
+.anim-up {
+  transform: translateY(50px);
+}
 
-.visible {
+.anim-left {
+  transform: translateX(-50px);
+}
+
+.anim-right {
+  transform: translateX(50px);
+}
+
+/* Clase activa con transición */
+.visible.anim-up,
+.visible.anim-left,
+.visible.anim-right {
   opacity: 1;
-  transform: translate(0, 0);
+  transform: translateX(0) translateY(0);
+  transition: all 2s ease; /* solo cuando se vuelve visible */
 }
+
+/* ===========================
+   🔹 MÁS ANIMACIONES BÁSICAS (REVEAL)
+=========================== */
+.reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Imágenes dentro de reveal sin transición inicial */
+.reveal img {
+  display: block;
+  width: 100%;
+}
+
+/* REVEAL FROM RIGHT */
+.reveal-right img {
+  clip-path: inset(0% 100% 0% 0%);
+}
+.reveal-right.visible img {
+  clip-path: inset(0% 0% 0% 0%);
+  transition: clip-path 3s ease-out; /* solo al volverse visible */
+}
+
+/* REVEAL FROM LEFT */
+.reveal-left img {
+  clip-path: inset(0% 0% 0% 100%);
+}
+.reveal-left.visible img {
+  clip-path: inset(0% 0% 0% 0);
+  transition: clip-path 3s ease-out;
+}
+
+/* REVEAL FROM TOP */
+.reveal-up img {
+  clip-path: inset(100% 0% 0% 0%);
+}
+.reveal-up.visible img {
+  clip-path: inset(0% 0% 0% 0%);
+  transition: clip-path 3s ease-out;
+}
+
+/* REVEAL FROM BOTTOM */
+.reveal-down img {
+  clip-path: inset(0% 0% 100% 0%);
+}
+.reveal-down.visible img {
+  clip-path: inset(0% 0% 0% 0%);
+  transition: clip-path 3s ease-out;
+}
+
+
+
+
+
+
 
 /* ===========================
    📱 RESPONSIVE

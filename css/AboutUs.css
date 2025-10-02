@@ -1,0 +1,535 @@
+/* ===========================
+   🔹 HERO
+=========================== */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start; /* horizontal: izquierda */
+  align-items: flex-end;       /* vertical: abajo */
+  text-align: flex;  color: var(--color-texto);
+
+  /* Imagen de fondo + gradiente de sombra arriba-abajo */
+  background-image: 
+    linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0)), 
+    url('../Media/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: 0; /* por debajo del contenido */
+}
+
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0));
+  z-index: 2; /* encima de la imagen, debajo del contenido */
+  pointer-events: none;
+}
+
+
+.hero-content {
+  position: relative;
+  z-index: 3; /* sobre la sombra */
+  max-width: 950px;
+  padding: 0 20px;
+  margin-left: 90px;
+  margin-bottom: 100px;
+  font-size: 18px;
+}
+
+/* ===========================
+   🔹 SECCIÓN INFO
+=========================== */
+/* Contenedor principal */
+.info-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;        /* en lugar de 100vw */
+  padding-top: 150px;
+  padding-bottom: 90px;
+  margin: 0;
+  background-color: var(--color-fondo);
+  overflow: hidden;   /* corta cualquier desbordamiento */
+}
+
+.info-imagen img {
+  width: 100%;
+  max-width: 100%;
+  display: block;     /* elimina el espacio inline */
+}
+
+
+.info-texto {
+  flex: 0 1 45%;        /* ocupa máximo 45% */
+  max-width: 45%;
+  min-width: 250px;
+  padding-top: clamp(50px, 20vh, 250px); /* mínimo 50px, máximo 250px, proporcional 20% de la altura de la pantalla */
+  padding-left: clamp(20px, 8vw, 120px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.info-texto-contenido h2,
+.info-texto-contenido h1,
+.info-texto-contenido p {
+  width: 70%;                  /* ocupa todo el ancho de la columna */
+  box-sizing: border-box;
+  color: var(--color-texto);
+}
+
+.info-imagen {
+  flex: 0 1 55%;        /* ocupa el 55% restante */
+  display: flex;
+  justify-content: flex-end;  /* pegada a la derecha */
+  align-items: flex-start;    /* alineada arriba para que la imagen sea más alta */
+  margin-top: 50px;           /* margen superior si quieres */
+}
+
+.info-imagen img {
+  width: 100%;          /* ocupa toda la columna */
+  height: auto;
+  display: block;
+  border-radius: 0;
+  object-fit: cover;    /* cubre el área sin deformar */
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .info-section {
+    flex-direction: column;
+    padding: 30px 5%;
+    align-items: center;
+  }
+
+  .info-texto, .info-imagen {
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100%;
+    padding-left: 0;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .info-imagen img {
+    width: 90%;
+  }
+}
+
+
+/* ===========================
+   🔹 CARROUSEL
+=========================== */
+/* Fullscreen y contenedor */
+.carousel {
+  position: relative;
+  width: 100%;      /* en lugar de 100vw */
+  height: 100vh;
+  overflow: hidden; /* esto corta las imágenes fuera del viewport */
+}
+
+.carousel-images img {
+  position: absolute;
+  top: 0;
+  left: 100%;       /* sigue usando para animación */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;   /* evita espacios inline */
+}
+
+
+.carousel-images img {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: left 1s ease; /* efecto deslizante */
+  z-index: 1;
+  left: 100%; /* por defecto fuera de la pantalla a la derecha */
+}
+
+.carousel-images img.active {
+  left: 0;
+  z-index: 2;
+}
+
+.carousel-images img.previous {
+  left: -100%;
+  z-index: 1;
+}
+
+
+
+/* Contenido superpuesto */
+.carousel-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  color: white;
+  pointer-events: none; /* para que los botones funcionen */
+}
+
+/* Título arriba izquierda */
+.carousel-title {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  font-size: clamp(3rem, 6vw, 5rem);
+  margin: 0;
+  pointer-events: auto;
+}
+
+/* Texto asociado abajo izquierda */
+.carousel-text {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  max-width: 40%;
+  pointer-events: auto;
+}
+
+/* Progreso abajo centro */
+.carousel-progress {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  pointer-events: auto;
+}
+
+/* Controles abajo derecha */
+.carousel-controls {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  display: flex;
+  gap: 20px;
+  pointer-events: auto;
+}
+
+.carousel-controls button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+
+/* ===========================
+   🔹 OTRA SECCION
+=========================== */
+.linea-animada {
+  margin-top: 100px;
+  margin-bottom: 200px;
+  margin-left: 0.5%;
+  position: relative;   /* o absolute si quieres posicionarla */
+  height: 2px;          /* grosor de la línea */
+  width: 0;             /* empieza en 0 */
+  background-color: var(--color-determinado); /* color de la línea */
+  animation: linea-aparece 1.2s ease-out forwards; /* duración y animación */
+  border-radius: 20px;
+}
+
+/* Keyframes */
+@keyframes linea-aparece {
+  from { width: 0; }
+  to { width: 99%; }
+}
+
+/* Clase que activa la animación */
+.linea-animada.animar {
+  animation: linea-aparece 1.2s ease-out forwards;
+}
+
+
+.linea-animada2 {
+  margin-top: 200px;
+  margin-bottom: 30px;
+  position: relative;   /* o absolute si quieres posicionarla */
+  height: 2px;          /* grosor de la línea */
+  width: 0;             /* empieza en 0 */
+  background-color: var(--color-determinado); /* color de la línea */
+  animation: linea-aparece2 1.2s ease-out forwards; /* duración y animación */
+  border-radius: 20px;
+}
+
+/* Keyframes */
+@keyframes linea-aparece2 {
+  from { width: 0; }
+  to { width: 55%; }
+}
+
+/* Clase que activa la animación */
+.linea-animada2.animar {
+  animation: linea-aparece 1.2s ease-out forwards;
+}
+
+
+/* ===========================
+   🔹 SECCIÓN INFO"
+=========================== */
+/* Contenedor principal */
+.info-section2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  padding-bottom: 70px;
+  margin: 0;
+  background-color: var(--color-fondo);
+}
+
+.info-texto2 {
+  flex: 0 1 40%;        /* ocupa máximo 45% */
+  max-width: 40%;
+  min-width: 250px;
+  padding-top: clamp(50px, 20vh, 180px); /* mínimo 50px, máximo 250px, proporcional 20% de la altura de la pantalla */
+  padding-left: clamp(20px, 8vw, 120px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.info-texto-contenido2 h2,
+.info-texto-contenido2 h1,
+.info-texto-contenido2 p {
+  width: 70%;                  /* ocupa todo el ancho de la columna */
+  box-sizing: border-box;
+  color: var(--color-texto);
+}
+
+.info-imagen2 {
+  flex: 0 1 60%;         /* ocupa el 60% del ancho del contenedor */
+  display: flex;
+  gap: 20px;             /* espacio entre las imágenes */
+  justify-content: flex-start; /* alineadas a la izquierda */
+  box-sizing: border-box;
+  padding-right: 20px;    /* margen interno a la derecha */
+}
+
+.info-imagen2 img {
+  flex: 0 0 calc(50% - 10px); /* cada imagen ocupa la mitad menos la mitad del gap */
+  aspect-ratio: 2/3;
+  width: 100%;
+  max-width: 85%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .info-section {
+    flex-direction: column;
+    padding: 30px 5%;
+    align-items: center;
+  }
+
+  .info-texto, .info-imagen {
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100%;
+    padding-left: 0;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .info-imagen img {
+    width: 90%;
+  }
+}
+
+
+/* ===========================
+   🔹 SECCIÓN SCROLL TEXT
+=========================== */
+.scroll-section {
+  display: flex;
+  flex-wrap: wrap;             /* permite varias filas */
+  justify-content: center;     /* centra horizontalmente */
+  gap: 30px;                      /* ❌ sin espacio entre elementos */
+  width: 100%;
+  padding-bottom: 70px;
+  margin: 0 auto;
+  background-color: var(--color-fondo);
+}
+
+/* Todos los hijos, span o div, como flex items */
+.scroll-section .reveal {
+  display: flex;               
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  min-width: 200px;
+}
+
+/* Texto grande */
+.scroll-section span {
+  font-size: clamp(80px, 10vw, 150px);
+  display: inline-block;       
+}
+
+/* ===========================
+   🔹 MEDIA QUERIES RESPONSIVE
+=========================== */
+@media (max-width: 900px) {
+  .scroll-section .reveal {
+    flex: 0 0 50%; /* 2 por fila */
+  }
+}
+
+@media (max-width: 600px) {
+  .scroll-section .reveal {
+    flex: 0 0 100%; /* 1 por fila */
+  }
+}
+
+/* ===========================
+   🔹 ANIMACIONES EXISTENTES
+=========================== */
+.scroll-section .reveal-up:not(img) {
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.scroll-section .reveal.visible:not(img) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-section .reveal-up img {
+  display: block;
+  width: 100%;
+  clip-path: inset(100% 0% 0% 0%);
+  transition: clip-path 1s ease-out;
+}
+
+.scroll-section .reveal-up.visible img {
+  clip-path: inset(0% 0% 0% 0%);
+}
+
+/* ===========================
+   🔹 AJUSTE DE IMÁGENES
+=========================== */
+
+/* Estilos base para todas las imágenes */
+.scroll-section .reveal-up img {
+  display: block;
+  object-fit: cover;           
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* 🔸 Primera imagen → cuadrada */
+.scroll-section .reveal-up:nth-of-type(1) img {
+  width: 250px;
+  height: 250px;
+}
+
+/* 🔸 Segunda imagen → rectangular más pequeña */
+.scroll-section .reveal-up:nth-of-type(2) img {
+  width: 300px;
+  height: 200px;
+}
+
+/* Centrado de los contenedores */
+.scroll-section .reveal-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🔹 Adaptación para móviles */
+@media (max-width: 600px) {
+  .scroll-section .reveal-up:nth-of-type(1) img,
+  .scroll-section .reveal-up:nth-of-type(2) img {
+    width: 80%;
+    height: auto;
+  }
+}
+
+
+
+/* ==============================
+   MAPA
+=================================*/
+.map-section {
+  display: flex;
+  justify-content: center;      /* centra mapa y texto */
+  gap: 4rem;                    /* espacio entre mapa y texto */
+  padding: 4rem 10%;
+  background-color: var(--color-determinado);
+  flex-wrap: nowrap;            /* mantiene el texto a la derecha */
+}
+
+.map {
+  flex: 0 0 400px;              /* tamaño fijo base del mapa */
+  aspect-ratio: 1 / 1;          /* cuadrado */
+  max-width: 500px;
+}
+
+.map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.map-text {
+  flex: 1;                      /* ocupa el resto del espacio */
+  color: var(--color-texto);
+  text-align: left;
+  line-height: 1.6;
+  margin-top: 5rem;             /* espacio superior */
+  max-width: 600px;
+}
+
+/* Responsive — apilar en móviles */
+@media (max-width: 900px) {
+  .map-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .map {
+    width: 90%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+  }
+
+  .map-text {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+}
