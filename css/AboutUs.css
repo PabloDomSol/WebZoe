@@ -13,7 +13,7 @@
   /* Imagen de fondo + gradiente de sombra arriba-abajo */
   background-image: 
     linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0)), 
-    url('../Media/hero.jpg');
+    url('../media/hero.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -503,9 +503,11 @@
     max-width: 500px;
   }
 
-  /* CAROUSEL */
+
   .carousel {
-    height: 80vh;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* altura proporcional al ancho */
   }
 
   .carousel-title {
