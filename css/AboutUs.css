@@ -118,14 +118,6 @@
   overflow: hidden;
 }
 
-/* luego justo debajo */
-@media (max-width: 600px) {
-  .carousel {
-    height: unset; /* 🔹 elimina la altura heredada */
-    aspect-ratio: 16 / 9;
-  }
-}
-
 
 .carousel-images img {
   position: absolute;
@@ -550,7 +542,7 @@
   .carousel {
     width: 100%;
     height: 65vh !important;      /* fuerza la altura */
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
   }
 
   .carousel-images img {
