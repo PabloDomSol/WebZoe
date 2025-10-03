@@ -509,7 +509,7 @@
   /* CARRUSEL RESPONSIVE POR ANCHO */
   .carousel {
     width: 100%;
-    height: auto;
+    height: auto !important;      /* fuerza la anulación de 100vh */
     aspect-ratio: 4 / 3; /* altura proporcional al ancho */
   }
 
