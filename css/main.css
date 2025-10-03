@@ -1,3 +1,28 @@
+/* Evitar scroll horizontal */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Ajustes para el header responsive */
+@media (max-width: 600px) {
+  .main-header {
+    padding: 0 10px; /* menos padding */
+  }
+
+  .nav-btn {
+    margin-left: 0;
+  }
+
+  .menu-icon {
+    margin-right: 0;
+  }
+
+  .menu-icon span {
+    margin-right: 0;
+  }
+}
+
+
 /* ===========================
    🎨 RESET Y ESTILOS BASE
 =========================== */
@@ -5,13 +30,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f7f7f7;
-  color: #333;
-  line-height: 1.6;
 }
 /* ===========================
    🎨 VARIABLES GLOBALES

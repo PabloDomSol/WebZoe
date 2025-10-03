@@ -24,23 +24,40 @@ window.addEventListener('scroll', () => {
 
 //PARA CONTROLAR LAS ANIMACIONES DE APARICIONES
 
+// Seleccionamos todos los elementos
 const animElements = document.querySelectorAll('.anim-up, .anim-left, .anim-right');
-
 const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-down');
+const lineas = document.querySelectorAll('.linea-animada');
 
+// Reutilizamos un solo observer
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');  // entra → visible
+    const el = entry.target;
+
+    if (entry.isIntersecting) {
+      if (el.classList.contains('linea-animada')) {
+        // Configuramos el ancho final desde el atributo data-ancho
+        const ancho = el.getAttribute('data-ancho') || '100%';
+        el.style.setProperty('--linea-ancho', ancho);
+        el.classList.add('animar');
+      } else {
+        el.classList.add('visible');
+      }
     } else {
-      entry.target.classList.remove('visible'); // sale → oculto
+      if (el.classList.contains('linea-animada')) {
+        el.classList.remove('animar');
+        void el.offsetWidth; // fuerza reflow para reiniciar animación
+      } else {
+        el.classList.remove('visible');
+      }
     }
   });
 }, {
-  threshold: 0.01,           // mínimo 10% visible
-  rootMargin: "0px 0px -50px 0px" // activa un poco antes
+  threshold: 0.01,
+  rootMargin: "0px 0px -50px 0px"
 });
 
+// Observamos todos los elementos
 animElements.forEach(el => observer.observe(el));
-
 revealElements.forEach(el => observer.observe(el));
+lineas.forEach(el => observer.observe(el));

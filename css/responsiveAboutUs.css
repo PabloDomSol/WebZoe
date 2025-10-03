@@ -162,7 +162,6 @@
     padding-top: 20px;
     padding-left: 0;
     margin-bottom: 30px;
-    font-size: 50px; /* Ajusta según necesidad */
   }
 
   .info-texto-contenido p {
@@ -185,16 +184,18 @@
 
   /* INFO SECTION 2 */
   .info-section2 {
-    flex-direction: column;
+    flex-direction: row !important;
     align-items: center;
-    padding: 80px 5%;
+    text-align: center;
+    padding: 60px 5%;
   }
 
   .info-texto2 {
+    flex: 1 1 100%;
     max-width: 100%;
+    padding-top: 20px;
     padding-left: 0;
-    text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
 
   .info-texto2 h1 {
@@ -212,15 +213,15 @@
   }
 
   .info-imagen2 img {
-    flex: 0 0 90%;
-    max-width: 90%;
+    width: 100%;
+    max-width: 150px; /* Ajusta según diseño */
+    height: auto;
   }
 
   /* CARRUSEL */
   .carousel {
     width: 100%;
-    height: 65vh !important;      /* fuerza la altura */
-    aspect-ratio: 16 / 9;
+    height: 20vh !important;      /* fuerza la altura */
   }
 
   .carousel-images img {
@@ -240,10 +241,15 @@
   }
 
   .carousel-text {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     bottom: 20px;
     left: 20px;
     max-width: 85%;
+  }
+
+  .carousel-progress{
+    font-size: 0.8rem;
+
   }
 
   .carousel-controls {
@@ -255,7 +261,7 @@
   .carousel-controls button {
     width: 30px;
     height: 30px;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   /* SCROLL SECTION */
@@ -295,24 +301,44 @@
 
 
 
-  
-  .main-header {
-    height: 95px;
+.main-header {
+    display: flex;
+    justify-content: center; /* centra el logo */
+    align-items: center;
+    height: 80px;
+    padding: 0;
   }
 
+  /* Botón izquierda */
   .nav-btn {
-    font-size: 14px;
+    position: absolute;
+    left: 15px;          /* ajusta según necesites */
+    margin: 0;
+    font-size: 10px;
     padding: 8px 14px;
-    margin-left: 0px;
   }
 
-  .menu-icon span {
-    margin-right: 30px;
-    width: 22px;
+  /* Logo centrado */
+  .logo {
+    position: relative;
+    z-index: 1;          /* siempre encima */
   }
 
   .logo img {
     width: 35px;
     height: 35px;
+  }
+
+  /* Menú hamburguesa derecha */
+  .menu-icon {
+    position: absolute;
+    right: 15px;         /* ajusta según necesites */
+    margin: 0;
+    transform: scale(1.2);
+  }
+
+  .menu-icon span {
+    width: 22px;
+    height: 1px;
   }
 }

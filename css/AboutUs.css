@@ -52,14 +52,8 @@
 .info-section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: stretch;
-  width: 100%;        /* en lugar de 100vw */
-  padding-top: 150px;
-  padding-bottom: 90px;
-  margin: 0;
-  background-color: var(--color-fondo);
-  overflow: hidden;   /* corta cualquier desbordamiento */
+  padding-top: 120px;
+  padding-bottom: 80px;
 }
 
 .info-imagen img {
@@ -68,10 +62,13 @@
   display: block;     /* elimina el espacio inline */
 }
 
-
+.info-logo{
+  width: 50px;
+  height: auto;
+}
 .info-texto {
-  flex: 0 1 45%;        /* ocupa máximo 45% */
-  max-width: 45%;
+  flex: 1 45%;        /* ocupa máximo 45% */
+  max-width: 38%;
   min-width: 250px;
   padding-top: clamp(50px, 20vh, 250px); /* mínimo 50px, máximo 250px, proporcional 20% de la altura de la pantalla */
   padding-left: clamp(20px, 8vw, 120px);
@@ -85,17 +82,13 @@
 .info-texto-contenido h2,
 .info-texto-contenido h1,
 .info-texto-contenido p {
-  width: 70%;                  /* ocupa todo el ancho de la columna */
   box-sizing: border-box;
   color: var(--color-texto);
 }
 
 .info-imagen {
-  flex: 0 1 55%;        /* ocupa el 55% restante */
+  flex: 1 55%;        /* ocupa el 55% restante */
   display: flex;
-  justify-content: flex-end;  /* pegada a la derecha */
-  align-items: flex-start;    /* alineada arriba para que la imagen sea más alta */
-  margin-top: 50px;           /* margen superior si quieres */
 }
 
 .info-imagen img {
@@ -218,53 +211,43 @@
 
 
 /* ===========================
-   🔹 OTRA SECCION
+   🔹 LÍNEA ANIMADA
 =========================== */
+
 .linea-animada {
-  margin-top: 100px;
-  margin-bottom: 200px;
-  margin-left: 0.5%;
-  position: relative;   /* o absolute si quieres posicionarla */
-  height: 2px;          /* grosor de la línea */
-  width: 0;             /* empieza en 0 */
-  background-color: var(--color-determinado); /* color de la línea */
-  animation: linea-aparece 1.2s ease-out forwards; /* duración y animación */
+  margin: 100px auto 200px auto; /* centrada horizontalmente */
+  position: relative;
+  height: 2px;
+  width: 0;                    /* empieza en 0 */
+  background-color: var(--color-determinado);
   border-radius: 20px;
+  transition: width 1.2s ease-out;
 }
 
-/* Keyframes */
-@keyframes linea-aparece {
-  from { width: 0; }
-  to { width: 99%; }
+/* Animación desde la izquierda */
+.linea-animada.desde-izquierda.animar {
+  width: var(--linea-ancho, 100%); /* ancho configurable vía variable CSS */
 }
 
-/* Clase que activa la animación */
-.linea-animada.animar {
-  animation: linea-aparece 1.2s ease-out forwards;
+/* Animación desde el centro */
+.linea-animada.desde-centro.animar {
+  animation: desdeCentro 1.2s ease-out forwards;
+}
+
+@keyframes desdeCentro {
+  0% {
+    width: 0;
+    left: 50%;
+  }
+  100% {
+    width: var(--linea-ancho, 100%);
+    left: calc((100% - var(--linea-ancho, 100%)) / 2);
+  }
 }
 
 
-.linea-animada2 {
-  margin-top: 200px;
-  margin-bottom: 30px;
-  position: relative;   /* o absolute si quieres posicionarla */
-  height: 2px;          /* grosor de la línea */
-  width: 0;             /* empieza en 0 */
-  background-color: var(--color-determinado); /* color de la línea */
-  animation: linea-aparece2 1.2s ease-out forwards; /* duración y animación */
-  border-radius: 20px;
-}
 
-/* Keyframes */
-@keyframes linea-aparece2 {
-  from { width: 0; }
-  to { width: 55%; }
-}
 
-/* Clase que activa la animación */
-.linea-animada2.animar {
-  animation: linea-aparece 1.2s ease-out forwards;
-}
 
 
 /* ===========================
@@ -274,19 +257,15 @@
 .info-section2 {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: stretch;
-  width: 100%;
-  padding-bottom: 70px;
-  margin: 0;
-  background-color: var(--color-fondo);
+  padding-top: 120px;
+  padding-bottom: 80px;
 }
 
 .info-texto2 {
-  flex: 0 1 40%;        /* ocupa máximo 45% */
-  max-width: 40%;
+  flex: 1 40%;        /* ocupa máximo 45% */
+  max-width: 32%;
   min-width: 250px;
-  padding-top: clamp(50px, 20vh, 180px); /* mínimo 50px, máximo 250px, proporcional 20% de la altura de la pantalla */
+  padding-top: clamp(50px, 20vh, 250px); /* mínimo 50px, máximo 250px, proporcional 20% de la altura de la pantalla */
   padding-left: clamp(20px, 8vw, 120px);
 
   display: flex;
@@ -298,13 +277,12 @@
 .info-texto-contenido2 h2,
 .info-texto-contenido2 h1,
 .info-texto-contenido2 p {
-  width: 70%;                  /* ocupa todo el ancho de la columna */
   box-sizing: border-box;
   color: var(--color-texto);
 }
 
 .info-imagen2 {
-  flex: 0 1 60%;         /* ocupa el 60% del ancho del contenedor */
+  flex: 1 60%;         /* ocupa el 60% del ancho del contenedor */
   display: flex;
   gap: 20px;             /* espacio entre las imágenes */
   justify-content: flex-start; /* alineadas a la izquierda */
