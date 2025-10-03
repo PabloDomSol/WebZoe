@@ -13,7 +13,7 @@
   /* Imagen de fondo + gradiente de sombra arriba-abajo */
   background-image: 
     linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0)), 
-    url('../media/hero.jpg');
+    url('../Media/hero.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -106,6 +106,28 @@
   object-fit: cover;    /* cubre el área sin deformar */
 }
 
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .info-section {
+    flex-direction: column;
+    padding: 30px 5%;
+    align-items: center;
+  }
+
+  .info-texto, .info-imagen {
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100%;
+    padding-left: 0;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .info-imagen img {
+    width: 90%;
+  }
+}
+
 
 /* ===========================
    🔹 CARROUSEL
@@ -113,19 +135,10 @@
 /* Fullscreen y contenedor */
 .carousel {
   position: relative;
-  width: 100%;
+  width: 100%;      /* en lugar de 100vw */
   height: 100vh;
-  overflow: hidden;
+  overflow: hidden; /* esto corta las imágenes fuera del viewport */
 }
-
-/* luego justo debajo */
-@media (max-width: 600px) {
-  .carousel {
-    height: unset; /* 🔹 elimina la altura heredada */
-    aspect-ratio: 4 / 3;
-  }
-}
-
 
 .carousel-images img {
   position: absolute;
@@ -331,6 +344,30 @@
 }
 
 
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .info-section {
+    flex-direction: column;
+    padding: 30px 5%;
+    align-items: center;
+  }
+
+  .info-texto, .info-imagen {
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100%;
+    padding-left: 0;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .info-imagen img {
+    width: 90%;
+  }
+}
+
+
 /* ===========================
    🔹 SECCIÓN SCROLL TEXT
 =========================== */
@@ -358,6 +395,21 @@
 .scroll-section span {
   font-size: clamp(80px, 10vw, 150px);
   display: inline-block;       
+}
+
+/* ===========================
+   🔹 MEDIA QUERIES RESPONSIVE
+=========================== */
+@media (max-width: 900px) {
+  .scroll-section .reveal {
+    flex: 0 0 50%; /* 2 por fila */
+  }
+}
+
+@media (max-width: 600px) {
+  .scroll-section .reveal {
+    flex: 0 0 100%; /* 1 por fila */
+  }
 }
 
 /* ===========================
@@ -414,6 +466,15 @@
   align-items: center;
 }
 
+/* 🔹 Adaptación para móviles */
+@media (max-width: 600px) {
+  .scroll-section .reveal-up:nth-of-type(1) img,
+  .scroll-section .reveal-up:nth-of-type(2) img {
+    width: 80%;
+    height: auto;
+  }
+}
+
 
 
 /* ==============================
@@ -449,276 +510,6 @@
   line-height: 1.6;
   margin-top: 5rem;             /* espacio superior */
   max-width: 600px;
-}
-
-
-
-/* ================================
-   📱 RESPONSIVE GLOBAL
-================================ */
-
-/* 🔸 Tablets (hasta 1024px) */
-@media (max-width: 1024px) {
-
-  /* HERO */
-  .hero {
-    height: 80vh;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 5%;
-  }
-
-  .hero-content {
-    margin: 0;
-    max-width: 80%;
-    font-size: 16px;
-  }
-
-  /* INFO SECTION */
-  .info-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: stretch;
-    width: 100%;
-    padding-top: 150px;
-    padding-bottom: 90px;
-    background-color: var(--color-fondo);
-  }
-
-  .info-texto {
-    flex: 0 1 45%;
-    max-width: 45%;
-    padding-top: clamp(50px, 20vh, 250px);
-    padding-left: clamp(20px, 8vw, 120px);
-  }
-
-  .info-imagen {
-    flex: 0 1 55%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    margin-top: 50px;
-  }
-
-  .info-imagen img {
-    width: 90%;
-    max-width: 500px;
-  }
-
-
-  .info-texto-contenido h1 {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-  }
-
-  .info-texto-contenido h2 {
-    font-size: clamp(1.2rem, 2vw, 1.6rem);
-  }
-
-  .info-texto-contenido p {
-    width: 90%;
-    margin: 0 auto;
-  }
-
-
-@media (max-width: 600px) {
-
-  /* CARRUSEL RESPONSIVE POR ANCHO */
-  .carousel {
-    width: 100%;
-    height: auto !important;      /* fuerza la anulación de 100vh */
-    aspect-ratio: 4 / 3; /* altura proporcional al ancho */
-  }
-
-  .carousel-images img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* mantiene el recorte correcto */
-  }
-
-  .carousel-content {
-    height: 100%;
-  }
-
-  /* Ajuste de texto y controles */
-  .carousel-title {
-    font-size: 1.8rem;
-    top: 20px;
-    left: 20px;
-  }
-
-  .carousel-text {
-    font-size: 0.9rem;
-    bottom: 20px;
-    left: 20px;
-    max-width: 85%;
-  }
-
-  .carousel-controls {
-    bottom: 15px;
-    right: 20px;
-    gap: 10px;
-  }
-
-  .carousel-controls button {
-    width: 30px;
-    height: 30px;
-    font-size: 1rem;
-  }
-}
-
-
-  /* INFO SECTION 2 */
-  .info-section2 {
-    flex-direction: column;
-    align-items: center;
-    padding: 80px 5%;
-  }
-
-  .info-texto2 {
-    max-width: 100%;
-    padding-left: 0;
-    text-align: center;
-    margin-bottom: 50px;
-  }
-
-  .info-texto2 h1 {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-  }
-
-  .info-imagen2 {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-
-  .info-imagen2 img {
-    flex: 0 0 45%;
-    max-width: 45%;
-  }
-
-  /* SCROLL SECTION */
-  .scroll-section {
-    gap: 20px;
-    padding-bottom: 50px;
-  }
-
-  .scroll-section span {
-    font-size: clamp(60px, 8vw, 100px);
-  }
-
-  .scroll-section .reveal-up img {
-    width: 80%;
-  }
-}
-
-
-/* 🔸 Móviles (hasta 600px) */
-@media (max-width: 600px) {
-
-  /* HERO */
-  .hero {
-    height: 70vh;
-    background-position: center;
-  }
-
-  .hero-content {
-    max-width: 90%;
-    font-size: 15px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  /* INFO SECTION */
-  .info-section {
-    padding: 60px 5%;
-  }
-
-  .info-texto-contenido h1 {
-    font-size: 1.6rem;
-  }
-
-  .info-texto-contenido h2 {
-    font-size: 1rem;
-  }
-
-  .info-texto-contenido p {
-    font-size: 0.9rem;
-  }
-
-  .info-imagen img {
-    width: 100%;
-  }
-
-  /* CAROUSEL */
-  .carousel {
-    height: 65vh;
-  }
-
-  .carousel-title {
-    font-size: 1.8rem;
-    top: 20px;
-    left: 20px;
-  }
-
-  .carousel-text {
-    font-size: 0.9rem;
-    bottom: 20px;
-    left: 20px;
-    max-width: 85%;
-  }
-
-  .carousel-controls {
-    bottom: 15px;
-    right: 20px;
-    gap: 10px;
-  }
-
-  .carousel-controls button {
-    width: 30px;
-    height: 30px;
-    font-size: 1rem;
-  }
-
-  /* INFO SECTION 2 */
-  .info-texto2 h1 {
-    font-size: 1.4rem;
-  }
-
-  .info-texto2 h2 {
-    font-size: 1rem;
-  }
-
-  .info-imagen2 img {
-    flex: 0 0 90%;
-    max-width: 90%;
-  }
-
-  /* SCROLL SECTION */
-  .scroll-section span {
-    font-size: clamp(30px, 10vw, 60px);
-  }
-
-  .scroll-section .reveal-up img {
-    width: 70%;
-    height: auto;
-  }
-
-  /* FOOTER */
-  .footer footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-    padding: 20px;
-  }
-
-  .footer p {
-    margin: 5px 0;
-    font-size: 14px;
-  }
 }
 
 /* Responsive — apilar en móviles */
