@@ -174,24 +174,6 @@ body {
   height: 50px;
 
 }
-/* ===========================
-   📱 RESPONSIVE
-=========================== */
-@media (max-width: 600px) {
-  .nav-btn {
-    padding: 8px 14px;
-    font-size: 14px;
-  }
-
-  .logo img {
-    width: 35px;
-  }
-
-  section {
-    padding: 80px 15px 40px;
-  }
-}
-
 
 
 
@@ -299,7 +281,7 @@ body {
   .nav-btn {
     font-size: 14px;
     padding: 8px 14px;
-    margin-left: 30px;
+    margin-left: 0px;
   }
 
   .menu-icon span {
@@ -309,9 +291,5 @@ body {
 
   .logo img {
     width: 35px;
-  }
-
-  section {
-    padding: 80px 15px 40px;
   }
 }
