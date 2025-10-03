@@ -85,7 +85,7 @@ body {
 /* ===========================
    🔹 BOTÓN IZQUIERDA
 =========================== */
-.nav-btnheader {
+.nav-btn {
   font-size: 20px;
   background-color: rgba(0, 0, 0, 0.123); /* semitransparente */
   color: var(--color-texto);
@@ -102,7 +102,7 @@ body {
 }
 
 /* Efecto de relleno al pasar el ratón */
-.nav-btnheader::before {
+.nav-btn::before {
   content: "";
   position: absolute;
   top: 0;
@@ -114,11 +114,11 @@ body {
   z-index: -1;
 }
 
-.nav-btnheader:hover::before {
+.nav-btn:hover::before {
   width: 100%;
 }
 
-.nav-btnheader:hover {
+.nav-btn:hover {
   color: #fff;
 }
 
@@ -126,7 +126,7 @@ body {
    🔹 LOGO CENTRADO
 =========================== */
 
-.logoheader img {
+.logo img {
   width: 50px;
   height: 50px;
   cursor: pointer;
@@ -135,7 +135,7 @@ body {
 /* ===========================
    🔹 MENÚ HAMBURGUESA DERECHA
 =========================== */
-.menu-iconheader {
+.menu-icon {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -148,7 +148,7 @@ body {
   transform-origin: center; /* punto de referencia del escalado */
 }
 
-.menu-iconheader span {
+.menu-icon span {
   display: block;
   width: 40px;
   height: 1px;
@@ -158,16 +158,22 @@ body {
 }
 
 /* Animación hover */
-.menu-iconheader:hover span:nth-child(odd) {
+.menu-icon:hover span:nth-child(odd) {
   transform: translateX(6px);
   background-color: var(--color-principal);
 }
 
-.menu-iconheader:hover span:nth-child(even) {
+.menu-icon:hover span:nth-child(even) {
   transform: translateX(-6px);
   background-color: var(--color-principal);
 }
 
+
+.logo{
+  width: 50px;
+  height: 50px;
+
+}
 
 
 
@@ -266,18 +272,18 @@ body {
     height: 95px;
   }
 
-  .nav-btnheader {
+  .nav-btn {
     font-size: 14px;
     padding: 8px 14px;
     margin-left: 0px;
   }
 
-  .menu-iconheader span {
+  .menu-icon span {
     margin-right: 30px;
     width: 22px;
   }
 
-  .logoheader img {
-    width: 100px;
+  .logo img {
+    width: 35px;
   }
 }
