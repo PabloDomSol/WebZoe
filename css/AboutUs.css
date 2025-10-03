@@ -113,10 +113,19 @@
 /* Fullscreen y contenedor */
 .carousel {
   position: relative;
-  width: 100%;      /* en lugar de 100vw */
+  width: 100%;
   height: 100vh;
-  overflow: hidden; /* esto corta las imágenes fuera del viewport */
+  overflow: hidden;
 }
+
+/* luego justo debajo */
+@media (max-width: 600px) {
+  .carousel {
+    height: unset; /* 🔹 elimina la altura heredada */
+    aspect-ratio: 4 / 3;
+  }
+}
+
 
 .carousel-images img {
   position: absolute;
