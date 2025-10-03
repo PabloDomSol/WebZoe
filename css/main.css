@@ -291,12 +291,19 @@ body {
    📱 RESPONSIVE
 =========================== */
 @media (max-width: 600px) {
+  
+  .main-header {
+    height: 95px;
+  }
+
   .nav-btn {
-    padding: 8px 14px;
     font-size: 14px;
+    padding: 8px 14px;
+    margin-left: 30px;
   }
 
   .menu-icon span {
+    margin-right: 30px;
     width: 22px;
   }
 
