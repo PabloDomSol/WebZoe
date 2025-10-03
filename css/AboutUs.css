@@ -504,29 +504,52 @@
   }
 
 
+@media (max-width: 600px) {
+
+  /* CARRUSEL RESPONSIVE POR ANCHO */
   .carousel {
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 9; /* altura proporcional al ancho */
   }
 
+  .carousel-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* mantiene el recorte correcto */
+  }
+
+  .carousel-content {
+    height: 100%;
+  }
+
+  /* Ajuste de texto y controles */
   .carousel-title {
-    font-size: clamp(2rem, 5vw, 3rem);
-    top: 30px;
-    left: 30px;
+    font-size: 1.8rem;
+    top: 20px;
+    left: 20px;
   }
 
   .carousel-text {
-    bottom: 30px;
-    left: 30px;
-    max-width: 60%;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    bottom: 20px;
+    left: 20px;
+    max-width: 85%;
   }
 
   .carousel-controls {
-    bottom: 30px;
-    right: 30px;
+    bottom: 15px;
+    right: 20px;
+    gap: 10px;
   }
+
+  .carousel-controls button {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+}
+
 
   /* INFO SECTION 2 */
   .info-section2 {
