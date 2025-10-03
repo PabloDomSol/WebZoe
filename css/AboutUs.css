@@ -447,8 +447,8 @@
    RESPONSIVE
 =========================== */
 
-/* Móviles: hasta 600px */
-@media (max-width: 600px) {
+/* Móviles: hasta 768px */
+@media (max-width: 768px) {
 
   /* HERO */
   .hero {
@@ -465,7 +465,7 @@
 
   /* INFO SECTION */
   .info-section {
-    flex-direction: column;       /* apilar vertical */
+    flex-direction: row !important;
     align-items: center;
     text-align: center;
     padding: 60px 5%;
@@ -501,7 +501,7 @@
 
   .info-imagen img {
     width: 100%;
-    max-width: 400px;
+    max-width: 150px; /* Ajusta según diseño */
     height: auto;
   }
 
