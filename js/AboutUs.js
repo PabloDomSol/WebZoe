@@ -146,3 +146,84 @@ function revealNext() {
 
 window.addEventListener('scroll', revealNext);
 window.addEventListener('load', revealNext);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const wrapper = document.querySelector('.carousel-wrapper');
+let isDown = false;
+let startX;
+let scrollLeft;
+let isDragging = false;
+
+// Evitar arrastrar imágenes de forma nativa
+const imagess = document.querySelectorAll('.carousel-slide img');
+imagess.forEach(img => {
+  img.setAttribute('draggable', 'false');
+  img.addEventListener('dragstart', e => e.preventDefault());
+});
+
+// Drag horizontal
+wrapper.addEventListener('mousedown', (e) => {
+  // no bloquear botones
+  if (e.target.closest('.carousel-btn')) return;
+
+  isDown = true;
+  isDragging = false;
+  wrapper.classList.add('active');
+  startX = e.pageX;
+  scrollLeft = wrapper.scrollLeft;
+});
+
+wrapper.addEventListener('mouseup', (e) => {
+  if (!isDown) return;
+  isDown = false;
+  wrapper.classList.remove('active');
+
+  // Detectar clic sin arrastre en imagen
+  if (!isDragging) {
+    const img = e.target.closest('.carousel-slide img');
+    if (img) openLightbox(img.src);
+  }
+});
+
+wrapper.addEventListener('mouseleave', () => {
+  isDown = false;
+  wrapper.classList.remove('active');
+});
+
+wrapper.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  isDragging = true;
+  const x = e.pageX;
+  const walk = x - startX;
+  wrapper.scrollLeft = scrollLeft - walk;
+});
+
+// --- Botones carrusel ---
+const prevBtnn = document.querySelector('.carousel-btn.prev');
+const nextBtnn = document.querySelector('.carousel-btn.next');
+const slide = document.querySelector('.carousel-slide');
+
+if (prevBtnn && nextBtnn && slide) {
+  const slideWidth = slide.offsetWidth + 15; // ancho + gap
+
+  prevBtnn.addEventListener('click', () => {
+    wrapper.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+  });
+
+  nextBtnn.addEventListener('click', () => {
+    wrapper.scrollBy({ left: slideWidth, behavior: 'smooth' });
+  });
+}

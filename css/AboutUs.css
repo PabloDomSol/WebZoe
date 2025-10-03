@@ -385,7 +385,6 @@
 }
 
 
-
 /* ==============================
    MAPA
 =================================*/
@@ -419,4 +418,162 @@
   line-height: 1.6;
   margin-top: 5rem;             /* espacio superior */
   max-width: 600px;
+}
+
+
+
+/* ==============================
+   CARRUSEL PROYECTOS (Layout principal)
+=================================*/
+.carousel-projects {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding-left: 80px ;
+}
+
+/* 🔹 Bloque de texto */
+.carousel-projects-texto {
+  flex: 1 1 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+/* 🔹 Contenedor del carrusel */
+.carousel-projects-carousel {
+  flex: 1 1 60%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==============================
+   CARRUSEL INTERNO (imágenes más grandes)
+=================================*/
+.horizontal-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 900px; /* antes 700px */
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.carousel-wrapper {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+  padding: 20px 0;
+}
+
+.carousel-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px; /* antes 30px */
+}
+
+.carousel-slide {
+  flex: 0 0 auto;
+  width: 90vw;        /* antes 80vw → ocupa casi toda la pantalla */
+  max-width: 500px;   /* antes 380px → imágenes más grandes */
+  height: 320px;      /* altura fija para mantener proporción */
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto hover opcional (puedes quitarlo si no quieres interacción) */
+.carousel-slide:hover {
+  transform: scale(1.03);
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 🔹 Botones */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0e0800;
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  background: none;
+  border: none;
+}
+
+
+.carousel-btn.prev { left: -60px; }
+.carousel-btn.next { right: -60px; }
+
+/* ==============================
+   RESPONSIVE
+=================================*/
+@media (max-width: 768px) {
+  /* 🔹 Estructura general */
+  .carousel-projects {
+    display: flex;
+    flex-direction: column; /* ✅ apila el texto y el carrusel */
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0 20px; /* menos espacio lateral */
+  }
+
+  /* 🔹 Texto */
+  .carousel-projects-texto {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+
+  /* 🔹 Carrusel */
+  .carousel-projects-carousel {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* 🔹 Carrusel interno */
+  .horizontal-carousel {
+    width: 50%;
+    max-width: 500px; /* 🔸 antes 900px → más pequeño */
+    margin: 0 auto;
+    padding: 10px 0;
+  }
+
+  .carousel-wrapper {
+    padding: 10px 0;
+  }
+
+  .carousel-track {
+    gap: 15px; /* 🔸 menos espacio entre imágenes */
+  }
+
+  .carousel-slide {
+    width: 80vw;       /* 🔸 más pequeño que antes */
+    max-width: 320px;  /* 🔸 límite de ancho reducido */
+    height: 220px;     /* 🔸 más bajo */
+  }
+
+  /* 🔹 Botones de navegación más cerca */
+  .carousel-btn.prev { left: -40px; }
+  .carousel-btn.next { right: -40px; }
+
+  .carousel-btn {
+    font-size: 1.6rem;
+    padding: 6px 10px;
+  }
 }
