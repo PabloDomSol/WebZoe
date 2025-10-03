@@ -34,7 +34,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 1100px;
+  height: 110px;
   padding: 0 20px;
   position: fixed;
   top: 0;
@@ -275,7 +275,7 @@ body {
 @media (max-width: 600px) {
   
   .main-header {
-    height: 10px;
+    height: 95px;
   }
 
   .nav-btn {
