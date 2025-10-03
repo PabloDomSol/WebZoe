@@ -477,14 +477,7 @@
     padding-top: 20px;
     padding-left: 0;
     margin-bottom: 30px;
-  }
-
-  .info-texto-contenido h1 {
-    font-size: 1.6rem;
-  }
-
-  .info-texto-contenido h2 {
-    font-size: 1rem;
+    font-size: 0.5rem; /* Ajusta según necesidad */
   }
 
   .info-texto-contenido p {
