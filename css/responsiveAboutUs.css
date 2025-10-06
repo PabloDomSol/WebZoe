@@ -308,7 +308,7 @@
     margin-bottom: 50px;
   }
 
-  .video-section video {
+  .video-section {
     height: 35vh !important; /* misma altura que el carrusel */
     object-fit: cover; /* para llenar sin barras negras */
   }
