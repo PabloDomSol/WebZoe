@@ -435,6 +435,8 @@
   align-items: center;
   gap: 2rem;
   padding-left: 80px ;
+    margin-top: 50px;
+    margin-bottom: 250px;
 }
 
 /* 🔹 Bloque de texto */
@@ -521,6 +523,42 @@
 
 .carousel-btn.prev { left: -60px; }
 .carousel-btn.next { right: -60px; }
+
+
+.video-section {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* ocupa toda la altura visible */
+  overflow: hidden;
+}
+
+.video-section video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* recorta pero llena completamente */
+  display: block;
+  border-radius: 0;
+}
+
+
+.video-container {
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 30px;
+}
+
+.video-content h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.video-content p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
 
 /* ==============================
    RESPONSIVE
