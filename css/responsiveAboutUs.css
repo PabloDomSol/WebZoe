@@ -266,20 +266,44 @@
     font-size: 0.8rem;
   }
 
-  /* SCROLL SECTION */
-  .scroll-section {
-    gap: 20px;
-    padding-bottom: 50px;
-  }
+  /* SCROLL SECTION */.scroll-section {
+  gap: 4px;                 /* 🔹 menos espacio entre texto e imagen */
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 20px;     /* 🔹 menos espacio inferior */
+}
 
-  .scroll-section span {
-    font-size: clamp(30px, 10vw, 60px);
-  }
+/* Texto */
+.scroll-section span {
+  font-size: clamp(8px, 5vw, 18px); /* 🔹 texto más pequeño */
+  line-height: 1;
+  letter-spacing: 0.5px;            /* 🔹 más legible pese al tamaño */
+  text-align: center;
+}
 
-  .scroll-section .reveal-up img {
-    width: 70%;
-    height: auto;
-  }
+/* Contenedor de cada bloque */
+.scroll-section .reveal-up {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 80px;                  /* 🔹 reduce tamaño mínimo */
+  margin: 0 2px;                    /* 🔹 espacio lateral mínimo */
+}
+
+/* Imágenes */
+.scroll-section .reveal-up img {
+  width: auto;
+  height: auto;
+  max-width: 70px;                  /* 🔹 imágenes más pequeñas */
+  max-height: 70px;
+  object-fit: contain;              /* ✅ mantiene proporciones */
+  border-radius: 3px;               /* opcional, bordes suaves */
+}
+
+
+
 
   /* FOOTER */
   .footer footer {
