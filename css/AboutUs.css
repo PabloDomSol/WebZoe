@@ -120,6 +120,8 @@
   height: 100%;
   object-fit: cover;
   display: block;   /* evita espacios inline */
+  user-drag: none;
+  -webkit-user-drag: none;
 }
 
 
@@ -132,6 +134,8 @@
   transition: left 1s ease; /* efecto deslizante */
   z-index: 1;
   left: 100%; /* por defecto fuera de la pantalla a la derecha */
+  user-drag: none;
+  -webkit-user-drag: none;
 }
 
 .carousel-images img.active {
@@ -407,7 +411,6 @@
   width: 100%;
   height: 100%;
   border: none;
-  border-radius: 12px;
   object-fit: cover;
 }
 

@@ -1,3 +1,6 @@
+// ===============================
+// 🔹 Selecciones principales
+// ===============================
 const images = document.querySelectorAll('.carousel-images img');
 const texts = [
   "Texto asociado a la imagen 1",
@@ -10,18 +13,24 @@ const progress = document.querySelector('.carousel-progress');
 const carouselText = document.querySelector('.carousel-text');
 const nextBtn = document.querySelector('.next');
 const prevBtn = document.querySelector('.prev');
+const carousel = document.querySelector('.carousel'); // Contenedor principal del carrusel
 
 let currentIndex = 0;
 let isAnimating = false;
 let autoTimer = null;
+let isCarouselVisible = false; // 🔹 Solo avanzar si está visible
 
-// 🔹 Actualiza estado de los botones
+// ===============================
+// 🔹 Funciones
+// ===============================
+
+// Actualiza estado de los botones
 function updateButtons() {
-  prevBtn.disabled = currentIndex === 0 || isAnimating;
-  nextBtn.disabled = currentIndex === images.length - 1 || isAnimating;
+  prevBtn.disabled = isAnimating;
+  nextBtn.disabled = isAnimating;
 }
 
-// 🔹 Muestra imagen con animación
+// Muestra imagen con animación (circular)
 function showImage(nextIndex, direction = 'next') {
   if (isAnimating) return;
   isAnimating = true;
@@ -35,10 +44,7 @@ function showImage(nextIndex, direction = 'next') {
   images.forEach((img, i) => {
     img.classList.remove('previous', 'active');
     img.style.transition = 'none';
-
-    if (i !== currentIndex && i !== nextIndex) {
-      img.style.left = '100%'; // fuera de pantalla
-    }
+    if (i !== currentIndex && i !== nextIndex) img.style.left = '100%';
   });
 
   currentImage.classList.add('active');
@@ -48,14 +54,12 @@ function showImage(nextIndex, direction = 'next') {
   let animatedElement;
 
   if (direction === 'next') {
-    // ➡️ Nueva entra desde la derecha
     nextImage.style.left = '100%';
     void nextImage.offsetWidth;
     nextImage.style.transition = 'left 1s ease';
     nextImage.style.left = '0';
     animatedElement = nextImage;
   } else {
-    // ⬅️ Actual se desliza a la derecha, la nueva queda fija
     nextImage.style.left = '0';
     void nextImage.offsetWidth;
     currentImage.style.transition = 'left 1s ease';
@@ -63,51 +67,39 @@ function showImage(nextIndex, direction = 'next') {
     animatedElement = currentImage;
   }
 
-  // Fin de la animación
   const handleTransitionEnd = () => {
     animatedElement.removeEventListener('transitionend', handleTransitionEnd);
-
     currentImage.classList.remove('active');
     currentImage.classList.add('previous');
-
     currentIndex = nextIndex;
     carouselText.textContent = texts[nextIndex];
     progress.textContent = `${nextIndex + 1} - ${total}`;
-
     isAnimating = false;
     updateButtons();
   };
 
   animatedElement.addEventListener('transitionend', handleTransitionEnd);
-  resetAutoSlide(); // reiniciar temporizador
+  resetAutoSlide();
 }
 
-// 🔹 Botones
-nextBtn.addEventListener('click', () => {
-  if (isAnimating || currentIndex >= images.length - 1) return;
-  showImage(currentIndex + 1, 'next');
-});
-
-prevBtn.addEventListener('click', () => {
-  if (isAnimating || currentIndex <= 0) return;
-  showImage(currentIndex - 1, 'prev');
-});
-
-// 🔹 Cambio automático cada 10s (solo si no se ha llegado al final)
+// Auto-slide (solo si el carrusel es visible)
 function startAutoSlide() {
+  clearInterval(autoTimer);
   autoTimer = setInterval(() => {
-    if (!isAnimating && currentIndex < images.length - 1) {
-      showImage(currentIndex + 1, 'next');
+    if (isCarouselVisible && !isAnimating) {
+      const nextIndex = (currentIndex + 1) % images.length; // 🔹 loop circular
+      showImage(nextIndex, 'next');
     }
   }, 10000);
 }
 
+// Reinicia el auto-slide
 function resetAutoSlide() {
   clearInterval(autoTimer);
   startAutoSlide();
 }
 
-// 🔹 Inicialización
+// Inicialización
 function initCarousel() {
   images.forEach(img => {
     img.style.transition = 'none';
@@ -126,26 +118,78 @@ function initCarousel() {
 
 initCarousel();
 
+// ===============================
+// 🔹 Botones (circular)
+// ===============================
+nextBtn.addEventListener('click', () => {
+  if (isAnimating) return;
+  const nextIndex = (currentIndex + 1) % images.length;
+  showImage(nextIndex, 'next');
+});
 
-const reveals = document.querySelectorAll('.scroll-section .reveal');
+prevBtn.addEventListener('click', () => {
+  if (isAnimating) return;
+  const prevIndex = (currentIndex - 1 + images.length) % images.length;
+  showImage(prevIndex, 'prev');
+});
 
-let currentIndexx = 0;
-
-function revealNext() {
-  if (currentIndexx >= reveals.length) return;
-
-  const el = reveals[currentIndexx];
-  const rect = el.getBoundingClientRect();
-
-  // Activar cuando la parte superior del elemento esté cerca del centro de la pantalla
-  if (rect.top < window.innerHeight * 0.75) {
-    el.classList.add('visible');
-    currentIndexx++;
-  }
+// ===============================
+// 🔹 IntersectionObserver para auto-slide
+// ===============================
+if (carousel) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        isCarouselVisible = entry.isIntersecting;
+        if (isCarouselVisible) resetAutoSlide();
+      });
+    },
+    { threshold: 0.5 } // 50% visible
+  );
+  observer.observe(carousel);
 }
 
-window.addEventListener('scroll', revealNext);
-window.addEventListener('load', revealNext);
+// ===============================
+// 🔹 Drag horizontal para cambiar imágenes
+// ===============================
+let isDown = false;
+let startX = 0;
+let dragDistance = 0;
+
+carousel.addEventListener('mousedown', (e) => {
+  if (e.target.closest('.next') || e.target.closest('.prev')) return;
+  isDown = true;
+  startX = e.pageX;
+  dragDistance = 0;
+});
+
+carousel.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  dragDistance = e.pageX - startX;
+});
+
+carousel.addEventListener('mouseup', (e) => {
+  if (!isDown) return;
+  isDown = false;
+
+  if (dragDistance > 50) {
+    // arrastre hacia la derecha → prev
+    const prevIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(prevIndex, 'prev');
+  } else if (dragDistance < -50) {
+    // arrastre hacia la izquierda → next
+    const nextIndex = (currentIndex + 1) % images.length;
+    showImage(nextIndex, 'next');
+  }
+});
+
+carousel.addEventListener('mouseleave', () => {
+  isDown = false;
+});
+
+
+
+
 
 
 
@@ -161,8 +205,6 @@ window.addEventListener('load', revealNext);
 
 
 const wrapper = document.querySelector('.carousel-wrapper');
-let isDown = false;
-let startX;
 let scrollLeft;
 let isDragging = false;
 
