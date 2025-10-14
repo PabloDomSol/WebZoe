@@ -636,6 +636,15 @@ body.dark-mode .toggle-dark-mode::before {
 img {
 pointer-events: none;
 }
+  .header-phrase {
+  display: inline-block;       /* permite ancho y alto */
+  white-space: normal;
+  max-width: 100%;
+  }
+  
+.header-center {
+  width: 40%;
+}
 
 .main-header {
     display: flex;
@@ -671,9 +680,6 @@ pointer-events: none;
     height: 1px;
   }
   
-  .header-phrase {
-  display: none;
-  }
 
   /* Botón modo oscuro en responsive */
   .toggle-dark-mode {
