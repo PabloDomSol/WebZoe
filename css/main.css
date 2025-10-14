@@ -641,20 +641,22 @@ body.dark-mode .toggle-dark-mode::before {
     padding: 0;
   }
   .header-center {
-    position: relative;       /* quitar absolute */
-    transform: none;
-    margin: 0 auto;           /* centrar horizontal */
-    text-align: center;
-    z-index: 10;
-    max-width: 80%;           /* limitar ancho */
-  }
+  position: relative;       /* quitar absolute para móviles */
+  transform: none;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 10;
+  max-width: 80%;           /* limitar ancho para que haga wrap */
+  word-wrap: break-word;    /* permitir saltos de palabra si es necesario */
+  white-space: normal;      /* permitir varias líneas */
+}
 
-  .header-phrase {
-    white-space: normal !important; /* permitir varias líneas */
-    word-wrap: break-word;          /* saltos de palabra */
-    line-height: 1.3;               /* separar líneas */
-    font-size: clamp(1rem, 4vw, 2rem);
-  }
+.header-phrase {
+  font-size: clamp(1rem, 4vw, 2rem); /* tamaño adaptable */
+  line-height: 1.3;                 /* espacio entre líneas */
+  margin: 0;
+}
+
 
   /* Logo centrado */
   .logo {
