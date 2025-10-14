@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoe Corpóreos</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/Proyectos.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+  <!-- ============================= -->
+  <!-- HEADER / NAVBAR -->
+  <!-- ============================= -->
+
+  <header class="main-header">
+    <!-- Logo a la izquierda -->
+    <div class="logo">
+      <a href="index.html">
+        <img src="media/logo.jpg" alt="Logo del sitio">
+      </a>
+    </div>
+
+    <!-- Frase centrada -->
+    <div class="header-center">
+      <h1 class="header-phrase" id="rotating-phrase" >
+        “Un aspecto esencial de la creatividad es no tener miedo a fallar” Edwin Land
+      </h1>
+    </div>
+
+    <!-- Contenedor derecho: menú hamburguesa + botón modo oscuro -->
+    <div class="header-right">
+      <!-- Botón modo oscuro -->
+      <button class="toggle-dark-mode"></button>
+
+      <!-- Menú hamburguesa -->
+      <div class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================= -->
+  <!-- OVERLAY MENÚ DESPLEGABLE -->
+  <!-- ============================= -->
+  <!-- Overlay del menú -->
+  <div class="overlay" id="menuOverlay">
+    <div class="panel left"></div>
+    <div class="panel right"></div>
+
+    <div class="menu-content">
+      <button class="close-btn" id="closeMenu">✕</button>
+
+      <div class="menu-columns">
+        <!-- Columna izquierda -->
+        <div class="menu-col left-col">
+          <h1>ZOE</h1>
+          <p>
+            Creamos experiencias únicas combinando diseño, creatividad y tecnología.
+            Nuestro objetivo es inspirar, emocionar y conectar con las personas a través de espacios memorables.
+          </p>
+        </div>
+
+        <!-- Columna derecha -->
+        <div class="menu-col right-col">
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="AboutUs.html">ZOE</a></li>
+            <li class="dropdown">
+              <button class="dropdown-toggle">PROYECTOS</button>
+              <ul class="dropdown-content">
+                <li><a class="dropdown-content-a" href="Espacios.html">Espacios</a></li>
+                <li><a class="dropdown-content-a" href="Imagen.html">Imagen</a></li>
+                <li><a class="dropdown-content-a" href="Infografia.html">Infografía</a></li>
+                <li><a class="dropdown-content-a" href="Visuales.html">Visuales</a></li>
+                <li><a class="dropdown-content-a" href="Publicaciones.html">Publicaciones</a></li>
+                <li><a class="dropdown-content-a" href="Corporeos.html">Corpóreos</a></li>
+                <li><a class="dropdown-content-a" href="Internet.html">Internet</a></li>
+                <li><a class="dropdown-content-a" href="Consulting.html">Consulting</a></li>
+                <li><a class="dropdown-content-a" href="Eventos.html">Eventos</a></li>
+              </ul>
+            </li>
+            <li><a href="#">CONTACTO</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================= -->
+  <!-- CONTENIDO PRINCIPAL -->
+  <!-- ============================= -->
+  <main>
+        <section class="modulos-header">
+            <h2>Corpóreos</h2>
+
+            <div class="modulos-dropdown">
+                <button class="modulos-dropbtn">Filtrar</button>
+                    <div class="modulos-dropdown-content">
+                        <a href="#">Todos</a>
+                        <a href="#">Tematización</a>
+                        <a href="#">Museos</a>
+                        <a href="#">Espacios</a>
+                    </div>
+            </div>
+
+        </section>
+    <div class="linea-animada desde-izquierda" data-ancho="90%"></div>
+
+    
+    <section class="lista-modulos">
+
+        <a href="espacios.html" class="modulo" data-categoria="Espacios">
+            <div class="img-container" data-text="Tematización / Museos / Espacios interactivos">
+            <img src="media/Bodegon.jpg">
+            </div>
+            <h3>Espacios</h3>
+        </a>
+
+        <a href="imagen.html" class="modulo" data-categoria="Espacios">
+            <div class="img-container" data-text="Audiovisuales / Fotografía / Imagen 360 / Video corporativo">
+            <img src="media/Bodegon.jpg">
+            </div>
+            <h3>Imagen</h3>
+        </a>
+
+        <a href="infografia.html" class="modulo" data-categoria="Espacios">
+            <div class="img-container" data-text="Modelado 3D / Realidad Virtual / Animación / Mapping">
+            <img src="media/Bodegon.jpg">
+            </div>
+            <h3>Infografía</h3>
+        </a>
+
+        <a href="visuales.html" class="modulo" data-categoria="Espacios">
+            <div class="img-container" data-text="Diseño gráfico / Identidad visual / Ilustración / Publicidad">
+            <img src="media/Bodegon.jpg">
+            </div>
+            <h3>Visuales</h3>
+        </a>
+
+        <a href="publicaciones.html" class="modulo">
+            <div class="img-container" data-text="Diseño editorial / Guías / Merchandising / Papelería corporativa">
+            <img src="media/Bodegon.jpg">
+            </div>
+            <h3>Publicaciones</h3>
+        </a>
+
+        <a href="corporeos.html" class="modulo">
+            <div class="img-container" data-text="Señalética / Totems / Mesas panorámicas / Monumentos conmemorativos">
+            <img src="media/Bodegon.jpg">
+            </div>
+            <h3>Corpóreos</h3>
+        </a>
+
+        <a href="internet.html" class="modulo">
+            <div class="img-container" data-text="Web / Apps / Marketing digital / Streaming / E-commerce">
+            <img src="media/Bodegon.jpg">
+            </div>
+            <h3>Internet</h3>
+        </a>
+
+        <a href="consulting.html" class="modulo">
+            <div class="img-container" data-text="Proyectos expositivos / Contenidos / Planificación estratégica">
+            <img src="media/Bodegon.jpg">
+            </div>
+            <h3>Consulting</h3>
+        </a>
+
+        <a href="eventos.html" class="modulo">
+            <div class="img-container" data-text="Presentaciones / Servicios integrales / Streaming / Realizaciones en directo">
+            <img src="media/Bodegon.jpg">
+            </div>
+            <h3>Eventos</h3>
+        </a>
+        </section>
+
+
+
+
+
+  </main>
+
+  <!-- ============================= -->
+  <!-- SCRIPTS -->
+  <!-- ============================= -->
+  <script src="js/filtro.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

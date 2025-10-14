@@ -1,6 +1,7 @@
 /* Evitar scroll horizontal */
 html, body {
   overflow-x: hidden;
+  font-family: 'Times New Roman', serif;
 }
 
 /* Ajustes para el header responsive */
@@ -35,12 +36,22 @@ html, body {
    🎨 VARIABLES GLOBALES
 =========================== */
 :root {
-  --color-principal: #dfdba7;
-  --color-borde: #dfdba7;
-  --color-texto: #dfdba7;
-  --color-fondo: white;
-  --color-determinado: black;
-  --duracion-animacion: 2s;
+  --color-principal: #f4e7d2;
+  --color-borde: #f4e7d2;
+  --color-texto: #000000;
+  --color-fondo: #ffffff;
+  --color-fondo-secundario: #000000;
+  --color-fondo-oscuro: rgb(17, 17, 17);
+  --duracion-animacion: 0.3s;
+
+/* Variables para modo oscuro */
+.dark-mode {
+  --color-principal: #111111;
+  --color-borde: #f4e7d2;
+  --color-texto: #f4e7d2;
+  --color-fondo: rgb(17, 17, 17);
+  --color-fondo-secundario: #000000;
+}
 }
 
 
@@ -60,19 +71,18 @@ html, body {
   width: 100%;
   z-index: 100;
 
-  /* Sin difuminado inicial */
   background-color: transparent;
   backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
   border-bottom: 2px solid transparent;
   overflow: visible;
 
-  transition: all 0.4s ease; /* transición para difuminado y movimiento */
+  transition: all 0.4s ease;
 }
 
-/* Header con difuminado activado */
+/* Header con difuminado al hacer scroll */
 .main-header.scrolled {
-  background-color: rgba(41, 41, 41, 0.164); /* sutil */
+  background-color: rgba(41, 41, 41, 0.164);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(5px);
 }
@@ -82,7 +92,6 @@ html, body {
   transform: translateY(-120%);
 }
 
-
 /* Línea inferior animada al cargar */
 .main-header::after {
   content: "";
@@ -91,7 +100,7 @@ html, body {
   left: 0;
   height: 1.2px;
   width: 0;
-  background-color: var(--color-borde);
+  background-color: var(--color-texto);
   animation: linea-aparece var(--duracion-animacion) ease-out forwards;
 }
 
@@ -101,53 +110,36 @@ html, body {
 }
 
 /* ===========================
-   🔹 BOTÓN IZQUIERDA
+   🔹 LOGO IZQUIERDA
 =========================== */
-.nav-btn {
-  font-size: 20px;
-  background-color: rgba(0, 0, 0, 0.123); /* semitransparente */
-  color: var(--color-texto);
-  border: 2px solid var(--color-borde);
-  border-radius: 25px;
-  border-width: 1px;
-  padding: 8px 40px;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  transition: color 0.4s ease;
-  margin-bottom: 10px;
-  margin-left: 60px;
+.logo {
+  width: 50px;
+  height: 50px;
 }
 
-/* Efecto de relleno al pasar el ratón */
-.nav-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  background-color: var(--color-borde);
-  transition: width 0.4s ease;
-  z-index: -1;
-}
-
-.nav-btn:hover::before {
+.logo img {
   width: 100%;
-}
-
-.nav-btn:hover {
-  color: #fff;
+  height: 100%;
+  cursor: pointer;
 }
 
 /* ===========================
-   🔹 LOGO CENTRADO
+   🔹 FRASE CENTRADA
 =========================== */
+.header-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
 
-.logo img {
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
+.header-phrase {
+  display: inline-block;
+  white-space: pre; /* mantiene los espacios */
+  color: var(--color-texto); 
+  font-size: 2vw;        /* tamaño relativo al ancho de la pantalla */
+  margin: 0;
+  font-weight: normal;
 }
 
 /* ===========================
@@ -159,39 +151,72 @@ html, body {
   justify-content: center;
   gap: 7px;
   cursor: pointer;
-  margin-bottom: 10px;
+  transform: scale(1.2);
+  transform-origin: center;
   margin-right: 60px;
-
-  transform: scale(1.2); /* escala 1.5x más grande */
-  transform-origin: center; /* punto de referencia del escalado */
 }
 
 .menu-icon span {
   display: block;
   width: 40px;
   height: 1px;
-  background-color: var(--color-borde);
+  background-color: var(--color-texto);
   border-radius: 3px;
   transition: all 0.3s ease;
 }
 
-/* Animación hover */
+/* Animación hover del menú */
 .menu-icon:hover span:nth-child(odd) {
   transform: translateX(6px);
-  background-color: var(--color-principal);
+  background-color: var(--color-texto);
 }
 
 .menu-icon:hover span:nth-child(even) {
   transform: translateX(-6px);
-  background-color: var(--color-principal);
+  background-color: var(--color-texto);
 }
 
-
-.logo{
-  width: 50px;
-  height: 50px;
-
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Espacio entre el botón y el menú */
 }
+
+.toggle-dark-mode {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--color-texto); /* borde blanco siempre visible */
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease;
+  perspective: 600px; /* para efecto 3D */
+  overflow: hidden;
+}
+
+/* Círculo interno */
+.toggle-dark-mode::before {
+  content: "";
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  background-color: black; /* modo claro por defecto */
+  transition: background-color 0.4s ease, transform 0.4s ease;
+  transform: rotateY(0deg);
+  border: 2px solid white; /* borde blanco interno */
+  box-sizing: border-box;
+}
+
+/* Modo oscuro: relleno blanco con borde blanco */
+body.dark-mode .toggle-dark-mode::before {
+  background-color: white;
+  transform: rotateY(180deg); /* pequeño flip al cambiar */
+}
+
 
 
 
@@ -235,7 +260,64 @@ html, body {
 .reveal {
   position: relative;
   overflow: hidden;
+  display: inline-block;
 }
+
+/* Contenido dentro (texto o imagen) */
+.reveal > * {
+  display: inline-block;
+  width: 100%;
+  transition: clip-path 2s ease-out;
+}
+
+/* ===========================
+   🔹 REVEAL DESDE ARRIBA
+=========================== */
+.reveal-up > * {
+  clip-path: inset(100% 0 0 0); /* oculto desde arriba */
+}
+.reveal-up.visible > * {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ===========================
+   🔹 REVEAL DESDE ABAJO
+=========================== */
+.reveal-down > * {
+  clip-path: inset(0 0 100% 0); /* oculto desde abajo */
+}
+.reveal-down.visible > * {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ===========================
+   🔹 REVEAL DESDE LA IZQUIERDA
+=========================== */
+.reveal-left > * {
+  clip-path: inset(0 0 0 100%); /* oculto desde la izquierda */
+}
+.reveal-left.visible > * {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ===========================
+   🔹 REVEAL DESDE LA DERECHA
+=========================== */
+.reveal-right > * {
+  clip-path: inset(0 100% 0 0); /* oculto desde la derecha */
+}
+.reveal-right.visible > * {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ===========================
+   🔹 OPCIONAL: transición más suave en hover o repetición
+=========================== */
+.reveal > * {
+  will-change: clip-path;
+}
+
+
 
 /* Imágenes dentro de reveal sin transición inicial */
 .reveal img {
@@ -249,7 +331,7 @@ html, body {
 }
 .reveal-right.visible img {
   clip-path: inset(0% 0% 0% 0%);
-  transition: clip-path 3s ease-out; /* solo al volverse visible */
+  transition: clip-path 1.5s ease-out; /* solo al volverse visible */
 }
 
 /* REVEAL FROM LEFT */
@@ -258,7 +340,7 @@ html, body {
 }
 .reveal-left.visible img {
   clip-path: inset(0% 0% 0% 0);
-  transition: clip-path 3s ease-out;
+  transition: clip-path 1.5s ease-out;
 }
 
 /* REVEAL FROM TOP */
@@ -267,7 +349,7 @@ html, body {
 }
 .reveal-up.visible img {
   clip-path: inset(0% 0% 0% 0%);
-  transition: clip-path 3s ease-out;
+  transition: clip-path 1.5s ease-out;
 }
 
 /* REVEAL FROM BOTTOM */
@@ -276,33 +358,367 @@ html, body {
 }
 .reveal-down.visible img {
   clip-path: inset(0% 0% 0% 0%);
-  transition: clip-path 3s ease-out;
+  transition: clip-path 1.5s ease-out;
 }
 
 
 
+
+/* ===== OVERLAY BASE ===== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ===== PANELES ===== */
+.panel {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  transition: transform 0.7s ease-in-out;
+}
+
+.panel.left {
+  left: 0;
+  background-color: var(--color-borde);
+  transform: translateX(-100%);
+}
+
+.panel.right {
+  right: 0;
+  background-color: var(--color-fondo-oscuro);
+  transform: translateX(100%);
+}
+
+.overlay.active .panel.left,
+.overlay.active .panel.right {
+  transform: translateX(0);
+}
+
+/* ===== CONTENIDO DEL MENÚ ===== */
+.menu-content {
+  position: relative;
+  z-index: 1001;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: 0.2s;
+  pointer-events: none;
+  width: 90%;
+  color: #fff;
+}
+
+.overlay.active .menu-content {
+  opacity: 1;
+  pointer-events: all;
+  transition-delay: 0.8s;
+}
+
+/* ===== BOTÓN CLOSE ===== */
+.close-btn {
+  position: fixed;
+  top: 1.5rem;
+  right: 2rem;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: var(--color-borde);
+  cursor: pointer;
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.overlay.active .close-btn {
+  opacity: 1;
+  transition-delay: 0.9s;
+}
+
+.close-btn:hover {
+  color: #d4af37;
+  transform: scale(1.1);
+}
+
+/* ===== COLUMNAS ===== */
+.menu-columns {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
+  gap: 8%;
+}
+
+.left-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  padding-left: 5%;
+  padding-top: 16%;
+  max-width: 50%;
+}
+
+.right-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  padding-left: 10%;
+  padding-top: 15%;
+}
+
+/* ===== COLUMNA IZQUIERDA ===== */
+.left-col h1 {
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: var(--color-fondo-oscuro);
+  margin-bottom: 1rem;
+}
+
+.left-col p {
+  font-size: clamp(1.5rem, 3vw, 1.5rem);
+  line-height: 1.6;
+  color: var(--color-fondo-oscuro);
+  max-width: 50%;
+}
+
+/* ===== COLUMNA DERECHA ===== */
+.right-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.right-col ul li {
+  margin: 2%;
+}
+
+.right-col ul li a {
+  display: block; /* mantenemos bloque para flujo vertical */
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
+  font-size: clamp(1.3rem, 1.9vw + 0.5rem, 2.6rem);
+  color: var(--color-borde);
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.right-col ul li a:hover {
+  color: #9c968c;
+}
+
+/* ===== DROPDOWN ===== */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  text-align: left;
+}
+
+.dropdown-toggle {
+  display: block; /* bloque para que respete ancho completo */
+  width: 100%;
+  text-decoration: none;
+  background: none;
+  border: none;
+  color: var(--color-borde);
+  font-size: clamp(1.3rem, 1.9vw + 0.5rem, 2.6rem);
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+  position: relative;
+  padding-right: 2.5rem;
+  font-family: 'Times New Roman', serif;
+  text-align: left;
+}
+
+.dropdown-toggle:hover {
+  color: #9c968c;
+}
+
+.dropdown-toggle::after {
+  content: "▶";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.dropdown.open .dropdown-toggle::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.dropdown-content {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.dropdown-content.show {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.dropdown-content-a {
+  display: block; /* importante mantener flujo vertical */
+  width: 100%;
+  text-align: left!important;
+  font-size: clamp(1rem, 1.1vw + 0.35rem, 1.8rem) !important;
+  color: #ddd !important;
+  text-decoration: none !important;
+  margin: 0.5rem 0 !important;
+  transition: color 0.3s ease !important;
+}
+
+.dropdown-content-a:hover {
+  color: #d4af37 !important;
+}
+
+
 /* ===========================
-   📱 RESPONSIVE
+   🔹 LÍNEA ANIMADA
 =========================== */
-@media (max-width: 600px) {
-  
-  .main-header {
-    height: 95px;
+
+.linea-animada {
+  margin: 100px auto 200px auto; /* centrada horizontalmente */
+  position: relative;
+  height: 2px;
+  width: 0;                    /* empieza en 0 */
+  background-color: var(--color-texto);
+  border-radius: 20px;
+  transition: width 1.2s ease-out;
+}
+
+/* Animación desde la izquierda */
+.linea-animada.desde-izquierda.animar {
+  width: var(--linea-ancho, 100%); /* ancho configurable vía variable CSS */
+}
+
+/* Animación desde el centro */
+.linea-animada.desde-centro.animar {
+  animation: desdeCentro 1.2s ease-out forwards;
+}
+
+@keyframes desdeCentro {
+  0% {
+    width: 0;
+    left: 50%;
+  }
+  100% {
+    width: var(--linea-ancho, 100%);
+    left: calc((100% - var(--linea-ancho, 100%)) / 2);
+  }
+}
+
+
+@media (max-width: 768px) {
+.main-header {
+    display: flex;
+    justify-content: space-between; /* logo a la izquierda, menú a la derecha */
+    align-items: center;
+    height: 80px;
+    padding: 0;
   }
 
-  .nav-btn {
-    font-size: 14px;
-    padding: 8px 14px;
-    margin-left: 0px;
-  }
-
-  .menu-icon span {
-    margin-right: 30px;
-    width: 22px;
+  /* Logo centrado */
+  .logo {
+    top: 8px;
+    left: 15px;         /* ajusta según necesites */
+    position: relative;
+    z-index: 1;          /* siempre encima */
   }
 
   .logo img {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Menú hamburguesa derecha */
+  .menu-icon {
+    position: absolute;
+    right: 15px;         /* ajusta según necesites */
+    margin: 0;
+    transform: scale(1.2);
+  }
+
+  .menu-icon span {
+    width: 22px;
+    height: 1px;
+  }
+
+
+
+
+
+  .left-col{
+    display: none; /* elimina completamente la columna izquierda */
+
+  }
+  .panel.left {
+    display: none; /* elimina completamente la columna izquierda */
+  }
+
+  .panel.right {
+    width: 100%;      /* ocupar todo el ancho */
+    left: 0;           /* alineación a la izquierda */
+    right: auto;       /* quitar el right */
+    top: -100%;        /* empezar fuera de la pantalla */
+    transform: translateY(0); /* animación desde arriba */
+    transition: transform 0.5s ease-in-out;
+  }
+
+  /* Activar animación desde arriba */
+  .overlay.active .panel.right {
+    top: 0;
+    transform: translateY(100%);
+  }
+
+  .menu-columns {
+    display: flex;
+    flex-direction: column;      /* sigue apilado en columna */
+    justify-content: flex-start; /* arriba */
+    align-items: flex-start;     /* a la izquierda */
+    gap: 2rem;
+    padding-top: 15%;
+    padding-left: 10%;            /* un poco de margen a la izquierda */
+  }
+  .panel.right {
+    align-items: flex-start;
+    transform: translateY(-100%); /* empieza fuera de la pantalla */
+  }
+
+  .overlay.active .panel.right {
+    transform: translateY(0); /* entra desde arriba */
+  }
+  .menu-content {
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .right-col ul li a,
+  .dropdown-toggle {
+    font-size: clamp(2rem, 5vw, 3rem);
   }
 }

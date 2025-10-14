@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
   <!-- 🔹 TÍTULO -->
-  <title>Zoe Sitio Web</title>
+  <title>Zoe</title>
 
   <!-- 🔹 DESCRIPCIÓN PARA SEO -->
   <meta name="description" content="Descripción breve de tu sitio web.">
@@ -25,24 +25,83 @@
   <!-- 🧭 HEADER / NAVBAR -->
   <!-- ============================= -->
   <header class="main-header">
-    <!-- Botón a la izquierda -->
-    <button class="nav-btn" onclick="window.location.href='index.html'">
-      Inicio
-    </button>
-
-    <!-- Logo centrado -->
+    <!-- Logo a la izquierda -->
     <div class="logo">
-      <img src="media/logo.jpg" alt="Logo del sitio">
+      <a href="index.html">
+        <img src="media/logo.jpg" alt="Logo del sitio">
+      </a>
     </div>
 
-    <!-- Menú hamburguesa a la derecha -->
-    <div class="menu-icon">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
+    <!-- Frase centrada -->
+    <div class="header-center">
+      <h1 class="header-phrase" id="rotating-phrase">
+        “Un aspecto esencial de la creatividad es no tener miedo a fallar” Edwin Land
+      </h1>
+    </div>
+
+    <!-- Contenedor derecho: menú hamburguesa + botón modo oscuro -->
+    <div class="header-right">
+      <!-- Botón modo oscuro -->
+      <button class="toggle-dark-mode"></button>
+
+      <!-- Menú hamburguesa -->
+      <div class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </header>
+
+<!-- ============================= -->
+<!-- 🌙 OVERLAY MENÚ DESPLEGABLE -->
+<!-- ============================= -->
+<!-- Overlay del menú -->
+<div class="overlay" id="menuOverlay">
+  <div class="panel left"></div>
+  <div class="panel right"></div>
+
+  <div class="menu-content">
+    <button class="close-btn" id="closeMenu">✕</button>
+
+    <div class="menu-columns">
+      <!-- Columna izquierda -->
+      <div class="menu-col left-col">
+        <h1>ZOE</h1>
+        <p>
+          Creamos experiencias únicas combinando diseño, creatividad y tecnología.
+          Nuestro objetivo es inspirar, emocionar y conectar con las personas a través de espacios memorables.
+        </p>
+      </div>
+
+      <!-- Columna derecha -->
+      <div class="menu-col right-col">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="AboutUs.html">ZOE</a></li>
+          <li class="dropdown">
+            <button class="dropdown-toggle">PROYECTOS</button>
+            <ul class="dropdown-content">
+              <li><a class="dropdown-content-a" href="Espacios.html">Espacios</a></li>
+              <li><a class="dropdown-content-a" href="Imagen.html">Imagen</a></li>
+              <li><a class="dropdown-content-a" href="Infografia.html">Infografía</a></li>
+              <li><a class="dropdown-content-a" href="Visuales.html">Visuales</a></li>
+              <li><a class="dropdown-content-a" href="Publicaciones.html">Publicaciones</a></li>
+              <li><a class="dropdown-content-a" href="Corporeos.html">Corpóreos</a></li>
+              <li><a class="dropdown-content-a" href="Internet.html">Internet</a></li>
+              <li><a class="dropdown-content-a" href="Consulting.html">Consulting</a></li>
+              <li><a class="dropdown-content-a" href="Eventos.html">Eventos</a></li>
+            </ul>
+          </li>
+          <li><a href="#">CONTACTO</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 
@@ -148,13 +207,13 @@
   <!-- Cuarta Sección Texto-->
   <!-- ============================= -->
     <section class="scroll-section">
-      <span class="reveal reveal-up">PROYECTOS</span>
-      <div class="reveal reveal-up"><img src="media/infoInicio.jpg" alt="Imagen 1"></div>
-      <span class="reveal reveal-up">CON MUCHA</span>
+      <div class="reveal reveal-down"><span>PROYECTOS</span></div>
+      <div class="reveal reveal-right"><img src="media/infoInicio.jpg" alt="Imagen 1"></div>
+      <div class="reveal reveal-left"><span>CON MUCHA</span></div>
     </section>
     <section class="scroll-section">
       <div class="reveal reveal-up"><img src="media/infoInicio.jpg" alt="Imagen 2"></div>
-      <span class="reveal reveal-up">DEDICACIÓN</span>
+      <div class="reveal reveal-right"><span>DEDICACIÓN</span></div>
     </section>
       
     <section class="scroll-section">

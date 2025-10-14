@@ -1,3 +1,10 @@
+/* Ejemplo de uso de variables */
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  transition: background-color var(--duracion-animacion), color var(--duracion-animacion);
+}
+
 /* ===========================
    🔹 HERO
 =========================== */
@@ -8,7 +15,7 @@
   display: flex;
   justify-content: flex-start; /* horizontal: izquierda */
   align-items: flex-end;       /* vertical: abajo */
-  text-align: flex;  color: var(--color-texto);
+  text-align: flex;  color: var(--color-borde);
 
   /* Imagen de fondo + gradiente de sombra arriba-abajo */
   background-image: 
@@ -42,7 +49,7 @@
   padding: 0 20px;
   margin-left: 90px;
   margin-bottom: 100px;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 /* ===========================
@@ -54,6 +61,7 @@
   flex-wrap: wrap;
   padding-top: 120px;
   padding-bottom: 80px;
+  gap: 60px;
 }
 
 .info-imagen img {
@@ -68,7 +76,7 @@
 }
 .info-texto {
   flex: 1 45%;        /* ocupa máximo 45% */
-  max-width: 38%;
+  max-width: 40%;
   min-width: 250px;
   padding-top: clamp(50px, 20vh, 250px); /* mínimo 50px, máximo 250px, proporcional 20% de la altura de la pantalla */
   padding-left: clamp(20px, 8vw, 120px);
@@ -223,7 +231,7 @@
   position: relative;
   height: 2px;
   width: 0;                    /* empieza en 0 */
-  background-color: var(--color-determinado);
+  background-color: var(--color-texto);
   border-radius: 20px;
   transition: width 1.2s ease-out;
 }
@@ -263,10 +271,11 @@
   flex-wrap: wrap;
   padding-top: 120px;
   padding-bottom: 80px;
+  gap: 60px;
 }
 
 .info-texto2 {
-  flex: 1 40%;        /* ocupa máximo 45% */
+  flex: 1 45%;        /* ocupa máximo 45% */
   max-width: 32%;
   min-width: 250px;
   padding-top: clamp(50px, 20vh, 250px); /* mínimo 50px, máximo 250px, proporcional 20% de la altura de la pantalla */
@@ -312,11 +321,11 @@
   display: flex;
   flex-wrap: wrap;             /* permite varias filas */
   justify-content: center;     /* centra horizontalmente */
-  gap: 30px;                      /* ❌ sin espacio entre elementos */
+  gap: 60px;                      /* ❌ sin espacio entre elementos */
   width: 100%;
   padding-bottom: 70px;
   margin: 0 auto;
-  background-color: var(--color-fondo);
+  position: relative;
 }
 
 /* Todos los hijos, span o div, como flex items */
@@ -330,22 +339,13 @@
 
 /* Texto grande */
 .scroll-section span {
-  font-size: clamp(80px, 10vw, 150px);
+  font-size: clamp(20px, 8vw, 110px);
   display: inline-block;       
 }
 
 /* ===========================
    🔹 ANIMACIONES EXISTENTES
 =========================== */
-.scroll-section .reveal-up:not(img) {
-  transform: translateY(50px);
-  transition: all 0.8s ease;
-}
-
-.scroll-section .reveal.visible:not(img) {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 .scroll-section .reveal-up img {
   display: block;
@@ -359,34 +359,35 @@
 }
 
 /* ===========================
-   🔹 AJUSTE DE IMÁGENES
+   🔹 AJUSTE DE IMÁGENES (funciona en todas las direcciones)
 =========================== */
 
 /* Estilos base para todas las imágenes */
-.scroll-section .reveal-up img {
+.scroll-section .reveal img {
   display: block;
   object-fit: cover;           
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* 🔸 Primera imagen → cuadrada */
-.scroll-section .reveal-up:nth-of-type(1) img {
+.scroll-section .reveal:nth-of-type(1) img {
   width: 250px;
   height: 250px;
 }
 
 /* 🔸 Segunda imagen → rectangular más pequeña */
-.scroll-section .reveal-up:nth-of-type(2) img {
+.scroll-section .reveal:nth-of-type(2) img {
   width: 300px;
   height: 200px;
 }
 
 /* Centrado de los contenedores */
-.scroll-section .reveal-up {
+.scroll-section .reveal {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 
 
 /* ==============================
@@ -397,7 +398,7 @@
   justify-content: center;      /* centra mapa y texto */
   gap: 4rem;                    /* espacio entre mapa y texto */
   padding: 4rem 10%;
-  background-color: var(--color-determinado);
+  background-color: var(--color-fondo-secundario);
   flex-wrap: nowrap;            /* mantiene el texto a la derecha */
 }
 
@@ -416,7 +417,7 @@
 
 .map-text {
   flex: 1;                      /* ocupa el resto del espacio */
-  color: var(--color-texto);
+  color: var(--color-borde);
   text-align: left;
   line-height: 1.6;
   margin-top: 5rem;             /* espacio superior */
@@ -433,7 +434,7 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 80px;
   padding-left: 80px ;
     margin-top: 50px;
     margin-bottom: 250px;
@@ -441,7 +442,7 @@
 
 /* 🔹 Bloque de texto */
 .carousel-projects-texto {
-  flex: 1 1 40%;
+  flex: 1 30%;
   display: flex;
   flex-direction: column;
   justify-content: center;

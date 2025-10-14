@@ -1,0 +1,195 @@
+section.lista-modulos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22vw, 1fr));
+  gap: 5rem;
+  max-width: 75%;
+  margin: 10% auto;
+  margin-top: 0%;
+}
+
+.modulo {
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  position: relative;
+}
+
+.modulo:hover {
+  transform: translateY(-0.5rem);
+}
+
+/* Contenedor de la imagen para el hover */
+.img-container {
+  position: relative;
+  width: 80%; /* mantiene tu proporción actual */
+  border: 1px solid var(--color-borde);
+  overflow: hidden;
+}
+
+/* Imagen base */
+.img-container img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 7 / 8;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+/* Efecto hover sobre la imagen */
+.img-container:hover img {
+  transform: scale(1.1);
+  filter: blur(3px);
+}
+
+/* Capa de texto sobre la imagen */
+.img-container::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(61, 61, 61, 0.9);
+  color: var(--color-texto);
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  padding: 1rem;
+  transition: opacity 0.4s ease;
+}
+
+/* Mostrar texto al pasar el ratón sobre la imagen */
+.img-container:hover::after {
+  opacity: 1;
+}
+
+/* Mantener tu título debajo de la imagen */
+.modulo h3 {
+  margin: 1.8rem 0 1rem 0; /* elimina margen izquierdo extra */
+  width: 80%; /* mismo ancho que la imagen */
+  text-align: left;
+  font-size: clamp(1rem, 2vw, 1.7rem); 
+  color: var(--color-texto);
+}
+
+
+
+
+
+.modulos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 80%;
+  margin: 0 auto 3rem auto;
+  margin-top: 180px; /* mucho más espacio arriba */
+}
+
+.modulos-header h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--color-texto);
+}.modulos-dropdown {
+  position: relative;
+  display: inline-block;
+  font-family: inherit;
+}
+
+/* Botón principal */
+.modulos-dropbtn {
+  background-color: #dcdcdc; /* gris claro */
+  color: black;  /* texto con la variable */
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: 2px solid var(--color-texto);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 180px; /* ancho mínimo */
+}
+
+/* Efecto hover y foco */
+.modulos-dropbtn:hover,
+.modulos-dropbtn:focus {
+  background-color: #c0c0c0; /* gris un poco más oscuro al hover */
+  color: black;
+  border-color: var(--color-texto);
+}
+
+/* Flecha al lado del texto */
+.modulos-dropbtn::after {
+  content: "▼";
+  margin-left: 0.5rem;
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+}
+
+/* Girar flecha al abrir */
+.modulos-dropdown.open .modulos-dropbtn::after {
+  transform: rotate(180deg);
+}
+
+/* Contenedor de opciones */
+.modulos-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #dcdcdc; /* mismo gris claro */
+  min-width: 180px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 10;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+  transition: opacity 0.3s ease;
+}
+
+/* Mostrar dropdown al abrir */
+.modulos-dropdown.open .modulos-dropdown-content {
+  display: block;
+}
+
+/* Opciones */
+.modulos-dropdown-content a {
+  color: black;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  display: block;
+  transition: background 0.2s ease;
+}
+
+/* Hover */
+.modulos-dropdown-content a:hover {
+  background-color: #c0c0c0; /* gris más oscuro */
+}
+
+/* Opción seleccionada */
+.modulos-dropdown-content a.selected {
+  background-color: #b0b0b0; /* gris un poco más oscuro que hover */
+  font-weight: bold;
+}
+
+
+
+
+
+@media (max-width: 600px) {
+  section.lista-modulos {
+    max-width: 90%;
+    gap: 1.5rem;
+  }
+
+  .modulo h3 {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+}

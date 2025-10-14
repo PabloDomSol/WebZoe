@@ -1,0 +1,90 @@
+body {
+    background-color: var(--color-fondo);
+}
+
+.gallery-section {
+  display: flex;
+  justify-content: center;
+}
+
+.gallery {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 18vw;
+  gap: 0px;
+  width: 75vw;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden; /* importante para el zoom */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease; /* zoom suave */
+}
+
+/* Zoom al pasar el ratón */
+.gallery-item:hover img {
+  transform: scale(1.1);
+  filter: blur(3px); /* difumina la imagen */
+}
+
+/* Capa azul semitransparente */
+.gallery-item::after {
+  content: attr(data-text); /* el texto se toma de un atributo data-text */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(61, 61, 61); /* azul semitransparente */
+  color: var(--color-texto);
+  font-size: 2em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* inicialmente invisible */
+  transition: opacity 0.3s ease;
+  text-align: center;
+}
+
+/* Mostrar capa azul cuando el ratón sigue sobre la imagen */
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+/* Título sobre la imagen (esquina inferior izquierda) */
+.caption {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  color: var(--color-texto);
+  padding: 10px 15px;
+  font-size: 1.5em;
+  border-radius: 3px;
+}
+
+/* Ocultar caption al hacer hover */
+.gallery-item:hover .caption {
+  opacity: 0;
+}
+
+
+/* Clases de ancho y altura */
+.img-span-1 { grid-column: span 1; }
+.img-span-2 { grid-column: span 2; }
+.img-span-3 { grid-column: span 3; }
+.img-span-2-rows { grid-row: span 2; }
+

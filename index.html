@@ -3,59 +3,165 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio | Mi Sitio Web</title>
+  <title>Zoe Inicio</title>
 
   <!-- Estilos -->
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
-  <!-- ============================= -->
-  <!-- 🔹 HEADER / NAVBAR -->
-  <!-- ============================= -->
-  <header class="main-header">
-    <!-- Botón a la izquierda -->
-    <button class="nav-btn" onclick="window.location.href='AboutUs.html'">
-      Sobre Nosotros
-    </button>
 
-    <!-- Logo centrado -->
+  <!-- ============================= -->
+  <!-- 🧭 HEADER / NAVBAR -->
+  <!-- ============================= -->
+
+  <header class="main-header">
+    <!-- Logo a la izquierda -->
     <div class="logo">
-      <img src="media/logo.jpg" alt="Logo del sitio">
+      <a href="index.html">
+        <img src="media/logo.jpg" alt="Logo del sitio">
+      </a>
     </div>
 
-    <!-- Menú hamburguesa a la derecha -->
-    <div class="menu-icon">
-      <span></span>
-      <span></span>
-      <span></span>
+    <!-- Frase centrada -->
+    <div class="header-center">
+      <h1 class="header-phrase" id="rotating-phrase" >
+        “Un aspecto esencial de la creatividad es no tener miedo a fallar” Edwin Land
+      </h1>
+    </div>
+
+    <!-- Contenedor derecho: menú hamburguesa + botón modo oscuro -->
+    <div class="header-right">
+      <!-- Botón modo oscuro -->
+      <button class="toggle-dark-mode"></button>
+
+      <!-- Menú hamburguesa -->
+      <div class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </header>
+
+  <!-- ============================= -->
+  <!-- 🌙 OVERLAY MENÚ DESPLEGABLE -->
+  <!-- ============================= -->
+  <!-- Overlay del menú -->
+  <div class="overlay" id="menuOverlay">
+    <div class="panel left"></div>
+    <div class="panel right"></div>
+
+    <div class="menu-content">
+      <button class="close-btn" id="closeMenu">✕</button>
+
+      <div class="menu-columns">
+        <!-- Columna izquierda -->
+        <div class="menu-col left-col">
+          <h1>ZOE</h1>
+          <p>
+            Creamos experiencias únicas combinando diseño, creatividad y tecnología.
+            Nuestro objetivo es inspirar, emocionar y conectar con las personas a través de espacios memorables.
+          </p>
+        </div>
+
+        <!-- Columna derecha -->
+        <div class="menu-col right-col">
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="AboutUs.html">ZOE</a></li>
+            <li class="dropdown">
+              <button class="dropdown-toggle">PROYECTOS</button>
+                <ul class="dropdown-content">
+                  <li><a class="dropdown-content-a" href="Espacios.html">Espacios</a></li>
+                  <li><a class="dropdown-content-a" href="Imagen.html">Imagen</a></li>
+                  <li><a class="dropdown-content-a" href="Infografia.html">Infografía</a></li>
+                  <li><a class="dropdown-content-a" href="Visuales.html">Visuales</a></li>
+                  <li><a class="dropdown-content-a" href="Publicaciones.html">Publicaciones</a></li>
+                  <li><a class="dropdown-content-a" href="Corporeos.html">Corpóreos</a></li>
+                  <li><a class="dropdown-content-a" href="Internet.html">Internet</a></li>
+                  <li><a class="dropdown-content-a" href="Consulting.html">Consulting</a></li>
+                  <li><a class="dropdown-content-a" href="Eventos.html">Eventos</a></li>
+              </ul>
+            </li>
+            <li><a href="#">CONTACTO</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ============================= -->
   <!-- 🏠 CONTENIDO PRINCIPAL -->
   <!-- ============================= -->
   <main>
-    <section class="home-section">
-      <br>
-      <br>
-      <br>
-      <br>
-      <h1>Bienvenido a Mi Sitio Web</h1>
-      <p>
-        Esta es la página principal.  
-        Haz clic en el botón de arriba para ir a “Sobre Nosotros”.
-      </p>
+<section class="gallery-section">
+  <div class="gallery">
+    <a href="AboutUs.html" class="gallery-item img-span-3" data-text="Ver proyecto">
+      <img src="media/FotoCastillo.jpg" alt="Imagen 1">
+      <span class="caption">Título 1</span>
+    </a>
 
-      <button class="go-about-btn" onclick="window.location.href='AboutUs.html'">
-        Ir a Sobre Nosotros
-      </button>
-    </section>
+    <a href="Corporeos.html" class="gallery-item img-span-1 img-span-2-rows" data-text="Señalética / Totems interactivos / Totems / Señalética inteligente / Señalética tematizada / Mesas panorámicas / Rutas Interactivas / Monumentos conmemorativos">
+      <img src="media/totem.jpg" alt="Corpóreos">
+      <span class="caption">Corpóreos</span>
+    </a>
+
+    <a href="Imagen.html" class="gallery-item img-span-2" data-text="Audiovisuales / Publicidad / Cine Digital / Broadcasting / Video Corporativo / Postproducción / Fotografía / Gigapan / Imagen Aérea / Imagen 360 / Audio-Videoguias inteligentes / Sonido">
+      <img src="media/FotoCastillo.jpg" alt="Imagen">
+      <span class="caption">Imagen</span>
+    </a>
+
+    <a href="Espacios.html" class="gallery-item img-span-1" data-text="Tematización / Museos / Centros de Interpretación / Centros de Recepción de Visitantes / Exposiciones / Efímeros / Diseño Expositivo / Proyecciones inmersivas / Espacios Interactivos">
+      <img src="media/infoInicio.jpg" alt="Espacios">
+      <span class="caption">Espacios</span>
+    </a>
+
+    <a href="Visuales.html" class="gallery-item img-span-1" data-text="Diseño Gráfico / Construcción de marcas / Identidad Visual / Ilustración / Publicidad">
+      <img src="media/Ilustra.jpg" alt="Visuales">
+      <span class="caption">Visuales</span>
+    </a>
+
+    <a href="Infografia.html" class="gallery-item img-span-3" data-text="Modelado 3D / Animación / Realidad Virtual / Realidad Aumentada / Mapping / Visitas virtuales 3D-360">
+      <img src="media/FotoCastillo.jpg" alt="Infografía">
+      <span class="caption">Infografía</span>
+    </a>
+
+    <a href="Publicaciones.html" class="gallery-item img-span-2" data-text="Diseño editorial / Guías Didácticas / Merchandising">
+      <img src="media/FotoCastillo.jpg" alt="Publicaciones">
+      <span class="caption">Publicaciones</span>
+    </a>
+
+    <a href="Internet.html" class="gallery-item img-span-1" data-text="Apps para dispositivos móviles / Contenidos Web / Marketing Digital / Streaming / Visitas 360 / e-commerce">
+      <img src="media/App.jpg" alt="Internet">
+      <span class="caption">Internet</span>
+    </a>
+
+    <a href="Eventos.html" class="gallery-item img-span-1" data-text="Presentaciones / Servicios integrales / Realizaciones en directo / Retransmisión streaming">
+      <img src="media/FotoCastillo.jpg" alt="Eventos">
+      <span class="caption">Eventos</span>
+    </a>
+
+    <a href="Consulting.html" class="gallery-item img-span-2" data-text="Proyectos expositivos / Creación de contenidos / Planificación estratégica / Comisionado de eventos / Publicidad">
+      <img src="media/FotoCastillo.jpg" alt="Consulting">
+      <span class="caption">Consulting</span>
+    </a>
+  </div>
+</section>
+
+
+
+
+
+
   </main>
 
   <!-- ============================= -->
   <!-- ⚙️ SCRIPTS -->
   <!-- ============================= -->
+  <script src="js/main.js"></script>
   <script src="js/index.js"></script>
 </body>
 </html>
