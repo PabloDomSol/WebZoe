@@ -181,15 +181,35 @@ section.lista-modulos {
 
 
 
-
-
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  /* Lista de módulos: 2 columnas en tablets y móviles grandes */
   section.lista-modulos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
     max-width: 90%;
-    gap: 1.5rem;
+    margin: 12% auto 3% auto; /* margen superior para separar del header */
   }
 
+  /* Títulos de módulos más pequeños */
   .modulo h3 {
-    font-size: clamp(1rem, 4vw, 1.5rem);
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    width: 100%;
+  }
+
+  .modulos-header h2{
+    font-size: clamp(1.3rem, 3vw, 1.4rem) !important;
+  }
+  .modulos-dropbtn {
+    font-size: 0.8rem;        /* un poco más grande */
+    padding: 0.5rem 1rem;   /* más cómodo para tocar en móviles */
+    min-width: 140px;       /* ancho mínimo ligeramente mayor */
+  }
+
+  .modulos-dropdown-content {
+    min-width: 140px;       /* mantener coherencia con el botón */
+  }
+  .linea-animada{
+    margin-top: 0px  !important;
+    margin-bottom: 70px  !important;
   }
 }
