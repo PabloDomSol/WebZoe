@@ -641,10 +641,6 @@ pointer-events: none;
   white-space: normal;
   max-width: 100%;
   }
-  
-.header-center {
-  width: 40%;
-}
 
 .main-header {
     display: flex;
