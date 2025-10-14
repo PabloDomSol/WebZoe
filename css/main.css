@@ -636,11 +636,6 @@ body.dark-mode .toggle-dark-mode::before {
 img {
 pointer-events: none;
 }
-  .header-phrase {
-  display: inline-block;       /* permite ancho y alto */
-  white-space: normal;
-  max-width: 100%;
-  }
 
 .main-header {
     display: flex;
