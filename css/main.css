@@ -633,6 +633,10 @@ body.dark-mode .toggle-dark-mode::before {
 
 
 @media (max-width: 768px) {
+img {
+pointer-events: none;
+}
+
 .main-header {
     display: flex;
     justify-content: space-between; /* logo a la izquierda, menú a la derecha */
@@ -665,6 +669,10 @@ body.dark-mode .toggle-dark-mode::before {
   .menu-icon span {
     width: 22px;
     height: 1px;
+  }
+  
+  .header-phrase {
+  display: none;
   }
 
   /* Botón modo oscuro en responsive */
