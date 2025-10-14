@@ -640,23 +640,7 @@ body.dark-mode .toggle-dark-mode::before {
     height: 80px;
     padding: 0;
   }
-  .header-center {
-    position: relative;
-    transform: none;
-    margin: 0 auto;
-    text-align: center;
-    z-index: 10;
-    max-width: 40%; /* limitar ancho para que no choque con botón */
-  }
-
-  .header-phrase {
-    display: block;          /* bloque permite múltiples líneas */
-    white-space: normal !important; /* permitir saltos de línea */
-    word-wrap: break-word;   /* dividir palabras largas si es necesario */
-    overflow-wrap: break-word; /* compatibilidad extra */
-    line-height: 1.2em;      /* espacio entre líneas */
-    font-size: clamp(1rem, 4vw, 2rem);
-  }
+  
 
   /* Logo centrado */
   .logo {
