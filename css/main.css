@@ -640,14 +640,6 @@ body.dark-mode .toggle-dark-mode::before {
     height: 80px;
     padding: 0;
   }
-  .header-center {
-    position: relative;       /* ya no absoluto */
-    transform: none;          /* quitar translateX */
-    margin: 0 auto;           /* centrar horizontal */
-    text-align: center;
-    z-index: 10;              /* encima de otros elementos */
-    font-size: clamp(1rem, 4vw, 2rem); /* ajustar tamaño al móvil */
-  }
 
   /* Logo centrado */
   .logo {
