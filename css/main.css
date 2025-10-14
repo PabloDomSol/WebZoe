@@ -667,6 +667,24 @@ body.dark-mode .toggle-dark-mode::before {
     height: 1px;
   }
 
+  /* Botón modo oscuro en responsive */
+  .toggle-dark-mode {
+    position: absolute;
+    right: 55px; /* se coloca justo antes del menú hamburguesa */
+    top: 50%;
+    transform: translateY(-50%) scale(0.9);
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid var(--color-texto);
+  }
+
+  .toggle-dark-mode::before {
+    width: 60%;
+    height: 60%;
+    border: 1.5px solid var(--color-texto);
+  }
+
+
 
 
 

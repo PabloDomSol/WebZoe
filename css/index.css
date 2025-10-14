@@ -88,3 +88,19 @@ body {
 .img-span-3 { grid-column: span 3; }
 .img-span-2-rows { grid-row: span 2; }
 
+
+/* Móviles: hasta 768px */
+@media (max-width: 768px) {
+.gallery{
+  margin-top: 24%;
+  margin-bottom: 0%;
+}
+.caption{
+  font-size: 3.4vw;
+  padding: 3px 6px;
+}
+
+.gallery-item::after {
+font-size: 2vw;
+}
+}
