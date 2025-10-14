@@ -646,7 +646,7 @@ body.dark-mode .toggle-dark-mode::before {
     margin: 0 auto;           /* centrar horizontal */
     text-align: center;
     z-index: 10;
-    max-width: 80%;           /* limitar ancho */
+    max-width: 40%;           /* ancho máximo para que no llegue al botón */
   }
 
   .header-phrase {
