@@ -633,9 +633,6 @@ body.dark-mode .toggle-dark-mode::before {
 
 
 @media (max-width: 768px) {
-img {
-pointer-events: none;
-}
 
 .main-header {
     display: flex;
