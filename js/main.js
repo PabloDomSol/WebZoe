@@ -118,44 +118,31 @@ const phrases = [
 let currentIndex = 0;
 const phraseElement = document.getElementById("rotating-phrase");
 
-// Caracteres para el efecto scramble
-const chars = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:',.<>?/`~«»“”°•◊¤¥©®±÷×!<>-\\/—=+*^#_";
+// 🔹 Animación solo slide
+function slideText(newText) {
+  // salida
+  phraseElement.classList.remove("slide-in");
+  phraseElement.classList.add("slide-out");
 
-// Función para animar la frase
-function scrambleText(newText) {
-  const oldText = phraseElement.textContent;
-  const maxLength = Math.max(oldText.length, newText.length);
-  let frame = 0;
-  const totalFrames = 40; // número de veces que cambia cada letra
+  // después de 150ms, cambia el texto y entra
+  setTimeout(() => {
+    phraseElement.textContent = newText;
+    phraseElement.classList.remove("slide-out");
+    phraseElement.classList.add("slide-in");
 
-  const interval = setInterval(() => {
-    let display = "";
-    for (let i = 0; i < maxLength; i++) {
-      if (i < newText.length && i < (frame / totalFrames) * newText.length) {
-        display += newText[i]; // letra final ya visible
-      } else if (i < newText.length) {
-        display += chars[Math.floor(Math.random() * chars.length)]; // letra aleatoria
-      } else {
-        display += " "; // relleno
-      }
-    }
-    phraseElement.textContent = display;
-    frame++;
-    if (frame > totalFrames) {
-      phraseElement.textContent = newText; // asegurar que quede la frase final
-      clearInterval(interval);
-    }
-  }, 80); // cada 50ms cambia
+    // quitar clase slide-in tras animación
+    setTimeout(() => phraseElement.classList.remove("slide-in"), 400);
+  }, 150);
 }
 
-// Función para cambiar la frase
 function rotatePhrase() {
   currentIndex = (currentIndex + 1) % phrases.length;
-  scrambleText(phrases[currentIndex]);
+  slideText(phrases[currentIndex]);
 }
 
-// Cambiar frase cada 6 segundos (puedes ajustar)
+// Cambiar frase cada 8 segundos
 setInterval(rotatePhrase, 30000);
+
 
 
 

@@ -266,6 +266,10 @@
     font-size: 0.8rem;
   }
 
+  .scroll-section-total{
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
   /* SCROLL SECTION */
   .scroll-section {
     display: flex;

@@ -133,6 +133,7 @@ html, body {
   text-align: center;
 }
 
+/* Animación al cambiar de frase */
 .header-phrase {
   display: inline-block;
   white-space: pre; /* mantiene los espacios */
@@ -140,7 +141,42 @@ html, body {
   font-size: 2vw;        /* tamaño relativo al ancho de la pantalla */
   margin: 0;
   font-weight: normal;
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
+
+/* 👉 sale hacia arriba */
+.header-phrase.slide-out {
+  animation: slideUpFade 0.5s ease forwards;
+}
+
+/* 👉 entra desde abajo */
+.header-phrase.slide-in {
+  animation: slideDownFade 0.6s ease forwards;
+}
+
+/* Keyframes */
+@keyframes slideUpFade {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideDownFade {
+  0% {
+    transform: translateY(40%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 
 /* ===========================
    🔹 MENÚ HAMBURGUESA DERECHA
@@ -601,7 +637,7 @@ body.dark-mode .toggle-dark-mode::before {
 =========================== */
 
 .linea-animada {
-  margin: 100px auto 200px auto; /* centrada horizontalmente */
+  margin: 0px auto 0px auto; /* centrada horizontalmente */
   position: relative;
   height: 2px;
   width: 0;                    /* empieza en 0 */
@@ -640,6 +676,17 @@ body.dark-mode .toggle-dark-mode::before {
     height: 80px;
     padding: 0;
   }
+  
+  .header-phrase {
+  display: inline-block;
+  white-space: normal; /* permite que el texto se divida en varias líneas */
+  color: var(--color-texto); 
+  font-size: 2vw;
+  margin: 0;
+  font-weight: normal;
+  max-width: 90vw; /* evita que el texto se extienda más allá del ancho visible */
+  }
+
 
   /* Logo centrado */
   .logo {
