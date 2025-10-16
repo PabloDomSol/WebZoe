@@ -779,8 +779,11 @@ body.dark-mode .toggle-dark-mode::before {
   color: #fff;
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 900px) {
+
+
+
+@media (max-width: 768px) {
+  
   .footer-columns {
     flex-wrap: wrap;
     justify-content: center;
@@ -802,13 +805,7 @@ body.dark-mode .toggle-dark-mode::before {
     max-width: 100%;
     font-size: 18px;
   }
-}
-
-
-
-
-
-@media (max-width: 768px) {
+  
 .main-header {
     display: flex;
     justify-content: space-between; /* logo a la izquierda, menú a la derecha */
