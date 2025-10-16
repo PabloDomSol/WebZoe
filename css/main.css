@@ -673,7 +673,7 @@ body.dark-mode .toggle-dark-mode::before {
 /* === FOOTER GENERAL === */
 .site-footer {
   background-color: #000;
-  color: #ddd;
+  color: var#f4e7d2;
   font-family: "Segoe UI", Arial, sans-serif;
   font-size: 15px;
   line-height: 1.6;
@@ -700,10 +700,10 @@ body.dark-mode .toggle-dark-mode::before {
 
 /* === DESCRIPCIÓN PRINCIPAL === */
 .footer-description blockquote {
-  border-left: 5px solid #888;
+  border-left: 5px solid #91897d;
   padding-left: 18px;
   margin: 0;
-  color: #ccc;
+  color: #f4e7d2;
   font-style: italic;
   font-size: 19px; /* 🔸 Texto más grande */
   max-width: 420px;
@@ -713,7 +713,7 @@ body.dark-mode .toggle-dark-mode::before {
 .footer-links h3,
 .footer-address h3 {
   font-size: 15px;
-  color: #fff;
+  color: #f4e7d2;
   margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -730,19 +730,19 @@ body.dark-mode .toggle-dark-mode::before {
 }
 
 .footer-links ul li a {
-  color: #ccc;
+  color: #f4e7d2;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .footer-links ul li a:hover {
-  color: #fff;
+  color: #b9b2a7;
 }
 
 /* === DIRECCIÓN === */
 .footer-address p {
   margin: 0;
-  color: #aaa;
+  color: #d6cbb8;
   font-size: 14px;
   line-height: 1.5;
 }
