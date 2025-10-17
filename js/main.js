@@ -150,21 +150,63 @@ setInterval(rotatePhrase, 30000);
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ===============================
+  // 🌙 MODO OSCURO
+  // ===============================
   const toggleBtn = document.querySelector('.toggle-dark-mode');
 
-  // Revisar preferencia guardada
   if (localStorage.getItem('darkMode') === 'enabled') {
     document.body.classList.add('dark-mode');
   }
 
-  // Alternar modo
   toggleBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
-
     if (document.body.classList.contains('dark-mode')) {
       localStorage.setItem('darkMode', 'enabled');
     } else {
       localStorage.setItem('darkMode', 'disabled');
     }
   });
+
+  // ===============================
+  // 🔒 MODAL DE PRIVACIDAD
+  // ===============================
+  const modal = document.getElementById("privacyModal");
+  const acceptBtn = document.getElementById("acceptBtn");
+  const rejectBtn = document.getElementById("rejectBtn");
+  const showMoreBtn = document.getElementById("showMoreBtn");
+  const fullText = document.getElementById("privacyFull");
+
+  // Mostrar modal si no hay decisión previa
+  if (!localStorage.getItem("privacyDecision")) {
+    modal.style.display = "flex";
+  }
+
+  // Botón "Ver más"
+  showMoreBtn.addEventListener("click", () => {
+    fullText.classList.toggle("oculto");
+    showMoreBtn.textContent = fullText.classList.contains("oculto") ? "Ver más" : "Ver menos ";
+  });
+
+  // Aceptar
+  acceptBtn.addEventListener("click", () => {
+    localStorage.setItem("privacyDecision", "accepted");
+    modal.style.display = "none";
+  });
+
+  // Rechazar
+  rejectBtn.addEventListener("click", () => {
+    localStorage.setItem("privacyDecision", "rejected");
+    modal.style.display = "none";
+  });
+
+  // Abrir modal desde enlaces del footer
+  document.querySelectorAll('a[data-modal="privacy"]').forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault(); // Evitar navegación
+      modal.style.display = "flex";
+    });
+  });
+
 });

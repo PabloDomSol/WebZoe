@@ -519,7 +519,7 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  color: #0e0800;
+  color: var(--color-texto);
   font-size: 2rem;
   padding: 10px 15px;
   cursor: pointer;
